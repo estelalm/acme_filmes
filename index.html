@@ -1,67 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/grids-responsive-min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <title>ACME FILMES</title>
+    <link rel="stylesheet" href="./css/output.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inder&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/style.css">
-    <script src="./js/main.js" type="module" defer></script>
-    <title>ACME Filmes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./js/login.js" defer></script>
 </head>
-<body>
-    <header>
-        <img src="./img/acme-logo-escuro.svg" alt="">
-        <div class="header-menu pure-menu pure-menu-horizontal">
-            <ul class="pure-menu-list">
-                <li class="pure-menu-item">
-                    <a href="#" class="pure-menu-link">Início</a>
-                </li>
-                <li class="pure-menu-item">
-                    <a href="#" class="pure-menu-link">Meus Filmes</a>
-                </li>
-                <li class="pure-menu-item">
-                    <a href="#" class="pure-menu-link">Lançamentos</a>
-                </li>
-                <li class="pure-menu-item">
-                    <a href="#" class="pure-menu-link">Gêneros</a>
-                </li>
-            </ul>
-        </div>
-        <div class="pesquisa">
-            <i class="material-icons">search</i>
-            <input type="text">
-        </div>
-        <a href="#" class="meu-perfil"></a>
-    </header>
-    <main>
-        <section class="destaques">
-            <h2>DESTAQUES</h2>
-            <div class="destaques-container" id="destaques-container">
-                <div class="card-filme aberto">
-                    <div class="capa"></div>
-                    <div class="info-filme">
-                        <div class="info-filme-header">
-                            <h3>NIMONA</h3>
-                        </div>
-                        <p>  
-                            <span class="ano_lancamento">2023</span>
-                            <span class="genero">Aventura/Fantasia</span></p>
-                        <p class="sinopse">
-                            Um cavaleiro é acusado de um crime que não cometeu, e a única pessoa que pode ajudá-lo a provar sua 
-                            inocência é Nimona, uma adolescente que muda de forma e que também pode ser um monstro que ele jurou matar.</p>
-                    </div>
+
+<body class="overflow-hidden size-full">
+    <main class="grid w-screen h-screen bg-indigo-900 grid-cols-[1fr,_40vw] text-white">
+        <div class="bg-[url('./img/filmes.png')] bg-cover"></div>
+        <div class="bg-violet-950 flex flex-col p-6">
+            <img class= "place-self-end" src="./img/help.png" alt="Interrogação">
+            <img class="h-44 w-56 place-self-center" src="./img/acme-logo-clara.png" alt="">
+            <div class="login-container flex flex-col gap-1 px-32">
+                <h3 class="p-6 text-3xl text-center">LOGIN</h3>
+                <div class="input-container  py-4">
+                    <input id="email" name="email" type="email" autocomplete="email" class="h-10 w-full border-0 p-1.5 text-indigo-950 bg-purple-400 focus:outline-indigo-900 sm:text-sm sm:leading-6">
+                    <label for="">Email</label>
                 </div>
+                <div class="input-container py-4">
+                    <input id="senha" name="senha" type="password" class="h-10 w-full border-0 p-1.5 text-indigo-950 bg-purple-400 focus:outline-indigo-900 sm:text-sm sm:leading-6">
+                    <label for="">Senha</label>
+                </div>
+                <button id="botao-entrar" class="bg-violet-600 w-full h-16 text-2xl border-pink-100 border">ENTRAR</button>
+                <span class="text-center p-4 text-pink-300">Esqueci a senha</span>
             </div>
-        </section>
-        <section class="meus-filmes">
-            <h2>Meus Filmes</h2>
-            <div class="meus-filmes-container" id="meus-filmes-container"></div>
-        </section>
+            <p class="text-center p-12">Não possui uma conta? <br>
+                <a class="text-xl" href="#">Criar Conta</a>
+            </p>
+        </div>
     </main>
+
 </body>
+
 </html>
+
+<!-- bg-[url('./img/filmes.png')] -->

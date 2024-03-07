@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css2?family=Inder&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/output.css">
+    <script src="./js/home.js" type="module" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>ACME Filmes</title>
+</head>
+<body class="h-screen w-screen bg-gradient-to-b from-violet-300 to-purple-900">
+    <header class="flex p-4 items-center justify-around">
+        <img class="h-32 w-48" src="../img/acme-logo-escuro.svg" alt="">
+            <ul class="flex w-2/6 text-white justify-around text-lg">
+                <li class=" ">
+                    <a href="#" class="">Início</a>
+                </li>
+                <li class=" ">
+                    <a href="#" class="">Meus Filmes</a>
+                </li>
+                <li class=" ">
+                    <a href="#" class="">Lançamentos</a>
+                </li>
+                <li class=" ">
+                    <a href="#" class="">Gêneros</a>
+                </li>
+            </ul>
+        <div class="flex items-center bg-pink-100 rounded-3xl py-2 px-4 w-1/4 focus-within:border-purple-800 focus-within:border">
+            <i class="material-icons">search</i>
+            <input type="text" class="bg-transparent w-full focus:outline-none px-2 focus-ring:0">
+        </div>
+        <a href="#" class="size-12 bg-black rounded-3xl"></a>
+    </header>
+    <main>
+        <section class="w-full text-white">
+            <h2 class="text-center text-3xl">DESTAQUES</h2>
+            <div class="flex justify-center" id="destaques-container">
+                <div class="border-4 border-violet-300 bg-[url('../img/nimona.png')] h-96 bg-contain w-[32vw] flex justify-end">
+
+                    <!-- informações do filme -->
+                    <div class="bg-gradient-to-r from-transparent from-6%  to-indigo-900 to-10% h-full w-4/6 px-20 py-8">
+                        <div class="info-filme-header">
+                            <h3 class="text-2xl">NIMONA</h3>
+                        </div>
+                        <p class="text-sm flex gap-5">  
+                            <span class="ano_lancamento">2023</span>
+                            <span class="genero">Aventura/Fantasia</span></p>
+                        <p class="text-sm py-6">
+                            Um cavaleiro é acusado de um crime que não cometeu, e a única pessoa que pode ajudá-lo a provar sua 
+                            inocência é Nimona, uma adolescente que muda de forma e que também pode ser um monstro que ele jurou matar.</p>
+                    </div>
+                    <div class="flex">
+                        <span class=""></span>
+                        <button class="saiba mais"></button>
+                    </div>
+                    <div class="flex"></div>
+                </div>
+            </div>
+        </section>
+        <section class="meus-filmes">
+            <h2>Meus Filmes</h2>
+            <div class="meus-filmes-container" id="meus-filmes-container"></div>
+        </section>
+    </main>
+</body>
+</html>
