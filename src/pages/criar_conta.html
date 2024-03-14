@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/output.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inder&display=swap" rel="stylesheet">
+    <title>Criar Conta</title>
+</head>
+<body class="size-full bg-slate-500 grid grid-rows-[20vh_80vh] font-textos ">
+    <header class=" flex pt-4 px-8 justify-between">
+        <a href="../../index.html" class="bg-[url(../img/seta.svg)] bg-cover bg-center h-16 aspect-square"></a>
+        <img src="../img/acme-logo-clara.png" alt="">
+        <a href="#"class=" bg-[url(../img/help.png)] bg-cover bg-center h-10 aspect-square"></a>
+    </header>
+    <main class=" flex flex-col items-center w-full p-8 text-white ">
+        <div class="container-criar bg-indigo-900/40 w-[36vw] p-14 flex flex-col gap-4">
+            <div class="input-container">
+                <input id="nome" name="nome" type="text" autocomplete="none" class="h-10 w-full border-0 p-1.5 text-indigo-950 bg-purple-400 focus:outline-indigo-900 sm:text-sm sm:leading-6">
+                <label for="">Nome Completo</label>
+            </div>
+            <div class="input-container">
+                <input id="celular" name="celular" type="text"  class="h-10 w-full border-0 p-1.5 text-indigo-950 bg-purple-400 focus:outline-indigo-900 sm:text-sm sm:leading-6">
+                <label for="">Celular</label>
+            </div>
+            <div class="input-container">
+                <input id="email" name="email" type="email" autocomplete="none" class="h-10 w-full border-0 p-1.5 text-indigo-950 bg-purple-400 focus:outline-indigo-900 sm:text-sm sm:leading-6">
+                <label for="">Email</label>
+            </div>
+            <div class="input-container">
+                <input id="confirma-senha" name="senha" type="password" class="h-10 w-full border-0 p-1.5 text-indigo-950 bg-purple-400 focus:outline-indigo-900 sm:text-sm sm:leading-6">
+                <label for="">Senha</label>
+            </div>
+            <div class="input-container">
+                <input id="confirma-senha" name="senha" type="password" class="h-10 w-full border-0 p-1.5 text-indigo-950 bg-purple-400 focus:outline-indigo-900 sm:text-sm sm:leading-6">
+                <label for="">Confirmar senha</label>
+            </div>
+        </div>
+        <button id="botao-entrar" class="bg-violet-600 w-[20%] px-12 h-16 text-3xl border border-pink-100  text-white relative bottom-3">CRIAR CONTA</button>
+    </main>
+</body>
+</html>

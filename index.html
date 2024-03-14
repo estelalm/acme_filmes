@@ -5,22 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ACME FILMES</title>
-    <link rel="stylesheet" href="./css/output.css">
+    <link rel="stylesheet" href="./src/css/output.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inder&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="./js/login.js" defer></script>
+    <script src="./src/js/login.js" type="module" defer></script>
 </head>
 
-<body class="overflow-x-hidden size-full">
+<body class="overflow-x-hidden size-full font-textos">
     <main class="grid w-screen h-screen bg-indigo-900 grid-cols-[1fr,_40vw] text-white">
-        <div class="bg-[url('./img/filmes.png')] bg-cover"></div>
+        <div class="bg-[url('./src/img/filmes.png')] bg-cover"></div>
         <div class="bg-violet-950 flex flex-col p-6">
-            <img class= "place-self-end" src="./img/help.png" alt="Interrogação">
-            <img class="h-44 w-56 place-self-center" src="./img/acme-logo-clara.png" alt="">
+            <img class= "place-self-end" src="./src/img/help.png" alt="Interrogação">
+            <img class="h-44 w-56 place-self-center" src="./src/img/acme-logo-clara.png" alt="">
             <div class="login-container flex flex-col gap-1 px-32">
-                <h3 class="p-6 text-3xl text-center">LOGIN</h3>
+                <h3 class="p-6 text-3xl text-center ">LOGIN</h3>
                 <div class="input-container  py-4">
                     <input id="email" name="email" type="email" autocomplete="email" class="h-10 w-full border-0 p-1.5 text-indigo-950 bg-purple-400 focus:outline-indigo-900 sm:text-sm sm:leading-6">
                     <label for="">Email</label>
@@ -33,7 +32,7 @@
                 <span class="text-center p-4 text-pink-300">Esqueci a senha</span>
             </div>
             <p class="text-center p-12">Não possui uma conta? <br>
-                <a class="text-xl" href="#">Criar Conta</a>
+                <a class="text-xl" href="./src/pages/criar_conta.html">Criar Conta</a>
             </p>
         </div>
     </main>
