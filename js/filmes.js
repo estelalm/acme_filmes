@@ -16,7 +16,3 @@ export async function getFilme (id){
 
     return data.filme[0]
 }
-
-
-
-  //colocar no cms

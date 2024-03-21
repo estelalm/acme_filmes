@@ -10,7 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inder&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/output.css">
     <script src="../js/home.js" type="module" defer></script>
-    <script src="https://cdn.tailwindcss.com"></script>
     <title>ACME Filmes</title>
 </head>
 
@@ -40,27 +39,57 @@
         <a href="#" class="size-12 bg-black rounded-3xl"></a>
     </header>
     <main>
-        <div class="absolute bg-fuchsia-950 h-full w-[50vw] left-[25%] p-2 rounded-md">
-            <div class="h-2/5">
-
+        <!-- página do filme clicado -->
+        <div class="absolute bg-fuchsia-950 h-[90vh] w-[54vw] left-[25%] bottom-[0.5px] p-2 rounded-md hidden">
+            <div class="h-3/6">
+                <iframe width="100%" height="100%"
+                    src="https://www.youtube-nocookie.com/embed/yBiU39bUFlA?si=GPRVz2g4m_7XG36w&amp;controls=0&rel=0"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
             </div>
-            <div class="info">
-                <div class="flex">
-                    <h2 class="text-4xl">NIMONA</h2>
-                    <span>Aventura/fANTASIA</span>
+            <div class="text-slate-50 pt-20 px-6 h-[56%] bottom-[3vw] relative bg-gradient-to-b
+                        from-transparent from-6% to-fuchsia-950 to-10% ">
+                <div class="flex ">
+                    <div class="grid w-1/2">
+                        <div class="grid">
+                            <h2 class="text-5xl">NIMONA</h2>
+                            <span>Aventura/Fantasia</span>
+                        </div>
+                        <p class="sinopse py-8 pr-3 leading-5">
+                            Um cavaleiro é acusado de um crime que não cometeu,
+                            e a única pessoa que pode ajudá-lo a provar sua inocência é
+                            Nimona, uma adolescente que muda de forma e que também pode
+                            ser um monstro que ele jurou matar.
+                        </p>
+                    </div> 
+                    <div class="w-1/2 flex flex-col items-end px-12">
+                        <button
+                                class="flex bg-pink-300 px-4 py-[12px] w-48 rounded-md  items-center gap-5">
+                                <img class="h-8" src="../img/comprar.png" alt="">
+                                <p class="text-indigo-950 text-xl">R$20.00</p>
+                    </button>
+                    <div class="flex justify-center w-48 py-4 gap-5 items-center">
+                        <button
+                        class="bg-[url('../img/add-lista.svg')] bg-cover bg-no-repeat bg-center h-10 rounded-xl aspect-square"
+                        id="adicionar-na-lista">
+                    </button>
+                    <button
+                    class="bg-[url('../img/avaliar.svg')] bg-contain bg-no-repeat bg-center h-12 aspect-square"
+                    id="adicionar-na-lista">
+                </button>
+                    </div>
+                    </div>
                 </div>
-                <p class="sinopse">
-                    Um cavaleiro é acusado de um crime que não cometeu, 
-                    e a única pessoa que pode ajudá-lo a provar sua inocência é 
-                    Nimona, uma adolescente que muda de forma e que também pode
-                    ser um monstro que ele jurou matar.
-                </p>
+    
                 <div class="info-mais grid">
                     <span>Duração: 1 hora e 41 minutos</span>
                     <span>Classificação Indicativa: Livre</span>
                     <span>Lançamento: 23 de junho 2023</span>
                     <span>Direção: Troy Quane, Nick Bruno</span>
-                    <span>Produtoras: Annapurna Pictures, Double Negative, Annapurna Animation, DAMN! Show Productions</span>
+                    <span>Produtoras: Annapurna Pictures, Double Negative, Annapurna Animation, DAMN! Show
+                        Productions</span>
                     <span>Vertigo Entertainment</span>
                     <span>Elenco: Chloë Grace Moretz, Riz Ahmed, Eugene Lee Yang, RuPaul</span>
 
