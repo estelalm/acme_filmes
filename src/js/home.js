@@ -4,6 +4,11 @@
 import { getFilmes, getFilme } from "./filmes.js"
 
 
+
+async function criarDestaques(){
+
+}
+
 async function criarCard(filme) {
 
     const card = document.createElement('div')
@@ -18,7 +23,6 @@ async function criarCard(filme) {
     return card
 }
 
-
 async function preencherContainer(){
     const container = document.querySelector('section')
     const filmes = await getFilmes()
@@ -28,3 +32,5 @@ async function preencherContainer(){
     //     container.appendChild(card)
     // })
 }
+
+
