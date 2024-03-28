@@ -2,7 +2,7 @@
 
 ## Critérios
 - [ ] ```Todas as telas prototipadas foram criadas conforme figma?```
-- [ ] Criou pastas para separar os diversos tipos de arquivos?
+- [x] Criou pastas para separar os diversos tipos de arquivos?
 - [ ] Utilizou variáveis CSS para cores e padrões?
 - [ ] Nomes das classes CSS são semânticas e padronizadas? 
 - [ ] ```Foi utilizado o método GET para listar os filmes?```
