@@ -44,6 +44,6 @@ Protótipo | FRONT-END | Landing Page | CMS
 
 
 [link1]: https://www.figma.com/
-[link2]: [https://github.com/](https://github.com/estelalm/acme_filmes)
+[link2]: https://github.com/estelalm/acme_filmes
 [link3]: https://github.com/
-[link4]: [https://github.com/](https://github.com/estelalm/acme-cms)
+[link4]: https://github.com/estelalm/acme-cms
