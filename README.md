@@ -36,7 +36,7 @@ Níveis | Desempenho | Nota
 
 ---
 
-## Exemplo de links
+## Links
 
 Protótipo | FRONT-END | Landing Page | CMS
 ----------|-----------|--------------|-----
