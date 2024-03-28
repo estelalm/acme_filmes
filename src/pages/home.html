@@ -15,9 +15,9 @@
 
 <body
     class="h-screen w-screen bg-cover bg-fixed bg-gradient-to-b from-violet-300 to-purple-900 overflow-x-hidden font-textos">
-    <header class="flex p-4 items-center justify-around">
+    <header class="flex p-4 items-center justify-around h-40">
         <img class="h-32 w-48" src="../img/acme-logo-escuro.svg" alt="">
-        <ul class="flex w-2/6 text-white justify-around text-lg">
+        <ul class="flex w-2/6 text-white justify-around text-xl">
             <li class=" ">
                 <a href="#" class="">Início</a>
             </li>
@@ -97,61 +97,11 @@
             </div>
         </div>
         <!-- seção de destaques -->
-        <section class="w-full h-[60vh] text-white">
-            <h2 class="text-center text-3xl pb-6">AAAAAAAAAA</h2>
+        <section class="w-full h-[60vh] text-white" id="destaque">
+            <h2 class="text-center text-3xl pb-6">Filmes em destaque ou sei lá</h2>
             <div class="flex h-[90%] justify-center gap-8 items-center" id="destaques-container">
-                <div class=" border-violet-300 bg-[url('../img/nimona.png')] h-[80%] bg-cover w-[16vw] flex justify-end shrink-0">
-                </div>
-                <div class=" border-violet-300 bg-[url('../img/filmes.png')] h-[80%] bg-cover w-[16vw] flex justify-end shrink-0">
-                </div>
-                <!-- card do filme em destaque -->
-                <div
-                    class="border-[6px] border-violet-300 bg-[url('../img/nimona.png')] shrink-0 h-full bg-contain w-[45vw] min-w-[400px] flex justify-end">
-                    <!-- informações do filme -->
-                    <div
-                        class="bg-gradient-to-r from-transparent from-6%  to-indigo-900 to-10% h-full w-[62%] pl-28 pr-8 py-12">
-                        <div class="info-filme-header">
-                            <h3 class="text-5xl">NIMONA</h3>
-                        </div>
-                        <p class="text-sm flex gap-5">
-                            <span class="ano_lancamento text-xl">2023</span>
-                            <span class="genero text-xl">Aventura/Fantasia</span>
-                        </p>
-                        <p class="text-xl py-6 w-[70%] leading-6">
-                            Um cavaleiro é acusado de um crime que não cometeu, e a única pessoa que pode ajudá-lo a
-                            provar sua
-                            inocência é Nimona, uma adolescente que muda de forma e que também pode ser um monstro que
-                            ele jurou matar.</p>
 
-                        <div class="flex text-violet-950 gap-10 h-10">
-                            <span class="flex bg-purple-400 px-3 py-2 gap-2 text-sm rounded-md ">
-                                <img class="h-full aspect-square" src="../img/duracao.png" alt="">
-                                1h 41m
-                            </span>
-                            <button class="flex  bg-purple-300 px-3 py-2 gap-2 text-sm rounded-md grow">
-                                Saiba Mais
-                            </button>
-                        </div>
-                        <div class="flex py-4 text-violet-950 items-center gap-10">
-                            <a href=""
-                                class="flex bg-pink-300 px-3 py-[10px] text-lg rounded-md w-40 items-center gap-5">
-                                <img class="h-6" src="../img/assistir.png" alt="">
-                                <p>Assistir</p>
-                            </a>
-                            <button
-                                class="bg-[url('../img/adicionado.svg')] bg-contain bg-no-repeat bg-center h-10 aspect-square"
-                                id="adicionar-na-lista">
-                            </button>
-                        </div>
-                    </div>
-
-                </div>
-                <div
-                    class=" border-violet-300 bg-[url('../img/gato_de_botas.png')] h-[80%] bg-cover w-[16vw] flex justify-end shrink-0">
-                </div>
-                <div
-                    class=" border-violet-300 bg-[url('../img/aranhavero.png')] h-[80%] bg-cover w-[16vw] flex justify-end shrink-0">
-                </div>
+                
             </div>
         </section>
         <!-- seção de filmes comprados -->
