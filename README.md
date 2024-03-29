@@ -36,9 +36,9 @@ Níveis | Desempenho | Nota
 
 ---
 
-## Exemplo de links
+## Links do projeto
 
-Protótipo | FRONT-END | Landing Page | CMS
+Protótipo | FRONT-END | Landing Page | CMS 
 ----------|-----------|--------------|-----
 [Figma][link1] | [ACME FILMES][link2] | [gitPreview][link3] | [CMS][link4] 
 
