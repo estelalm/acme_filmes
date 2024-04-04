@@ -3,8 +3,6 @@
 
 import { getFilmes, getFilme } from "./filmes.js"
 
-
-
 const destaqueContainer = document.getElementById('destaques-container')
 const meusFilmesContainer = document.getElementById('meus-filmes-container')
 async function criarDestaques() {
