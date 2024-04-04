@@ -18,7 +18,7 @@ export async function getFilme (id){
     return data
 }
 
-console.log(await getFilme(1))
+console.log(await getFilme(2))
 
 
   //colocar no cms

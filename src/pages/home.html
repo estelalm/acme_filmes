@@ -14,8 +14,9 @@
 </head>
 
 <body
-    class=" w-screen bg-cover bg-fixed bg-gradient-to-b from-violet-300 to-purple-900 overflow-x-hidden font-textos">
-    <div class="fixed top-0 left-0 z-2 bg-[#3f216e69] h-screen w-screen backdrop-blur-sm hidden" id="blur-overlay"></div>
+    class=" w-screen bg-cover bg-fixed bg-fundo-geral overflow-x-hidden font-textos
+    scrollbar scrollbar-thumb-roxo">
+    <div class="fixed top-0 left-0 z-2 bg-roxo-escuro2 h-screen w-screen backdrop-blur-sm hidden" id="blur-overlay"></div>
     <header class="flex  p-1 items-center justify-around h-24">
         <img class="h-16 w-48" src="../img/acme-logo-escuro.svg" alt="">
         <ul class="flex w-2/6 text-white justify-around text-xl">
@@ -29,17 +30,35 @@
                 <a href="#" class="">Lançamentos</a>
             </li>
             <li class=" ">
-                <div href="#" class="">
+                <div class="group cursor-pointer">
                     <span>Gêneros</span>
+                    <ul class="h-[50vh] w-[16vw] group-hover:block bg-roxo-escuro2 absolute p-6 rounded-lg border-2 border-roxo hidden" id="lista-genero">
+                        <li class="p-2 hover:bg-roxo-transparencia">AAAAAAAAAA</li>
+                    </ul>
                 </div>
             </li>
         </ul>
         <div
-            class="flex items-center bg-pink-100 rounded-3xl py-2 px-4 w-1/4 focus-within:border-purple-800 focus-within:border">
+            class="flex items-center bg-rosa-muito-claro rounded-3xl py-2 px-4 w-1/4 focus-within:border-purple-800 focus-within:border">
             <i class="material-icons">search</i>
             <input type="text" class="bg-transparent w-full focus:outline-none px-2 focus-ring:0">
         </div>
-        <a href="#" class="size-12 bg-black rounded-3xl"></a>
+        <a href="./conta.html" class="size-12 bg-black rounded-3xl group">
+            <div class="group-hover:flex h-[32vh] right-[1vw] items-end hidden absolute">
+                <div class="h-[26vh] w-[16vw]  bg-roxo-escuro2  p-6 rounded-lg border-2 border-roxo text-white">
+                    <ul class="pb-4">
+                        <li class="p-2 hover:bg-roxo-transparencia">Conta</li>
+                        <li class="p-2 hover:bg-roxo-transparencia">Configurações</li>
+                        <li class="p-2 hover:bg-roxo-transparencia">Compra</li>
+                    </ul>
+                    <div class="flex h-[5vh] justify-between ">
+                        <button class="bg-roxo-claro w-1/2 text-roxo-escuro-1 rounded-lg" id="sair">Sair</button>
+                        <button id="ajuda" class="flex items-center gap-4 text-rosa-claro" ><img src="../img/help.png" class="h-[50%]" alt="Símbolo de interrogação dentro de um círculo"> Ajuda </button>
+                    </div>
+                </div>
+            </div>
+
+        </a>
     </header>
     <main>
 
