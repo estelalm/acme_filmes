@@ -5,6 +5,7 @@ export async function getFilmes (){
     const response = await fetch(url)
     const data = await response.json()
 
+    console.log(data)
     return data.filmes
 }
 
@@ -14,9 +15,10 @@ export async function getFilme (id){
     const response = await fetch(url)
     const data = await response.json()
 
-    return data.filme[0]
+    return data
 }
 
+console.log(await getFilme(1))
 
 
   //colocar no cms
