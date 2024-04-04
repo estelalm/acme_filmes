@@ -14,10 +14,10 @@
 </head>
 
 <body
-    class="h-screen w-screen bg-cover bg-fixed bg-gradient-to-b from-violet-300 to-purple-900 overflow-x-hidden font-textos">
-    <div class="self-center bg-[#3f216e69] h-screen w-screen absolute backdrop-blur-sm hidden" id="blur-overlay"></div>
-    <header class="flex  p-4 items-center justify-around h-40">
-        <img class="h-32 w-48" src="../img/acme-logo-escuro.svg" alt="">
+    class=" w-screen bg-cover bg-fixed bg-gradient-to-b from-violet-300 to-purple-900 overflow-x-hidden font-textos">
+    <div class="fixed top-0 left-0 z-2 bg-[#3f216e69] h-screen w-screen backdrop-blur-sm hidden" id="blur-overlay"></div>
+    <header class="flex  p-1 items-center justify-around h-24">
+        <img class="h-16 w-48" src="../img/acme-logo-escuro.svg" alt="">
         <ul class="flex w-2/6 text-white justify-around text-xl">
             <li class=" ">
                 <a href="#" class="">Início</a>
@@ -42,11 +42,11 @@
     <main>
 
         <!-- seção de destaques -->
-        <section class="w-full h-[60vh] flex flex-col items-center text-white" id="destaque">
-            <h2 class="text-center text-3xl pb-6">Filmes em destaque ou sei lá</h2>
+        <section class="w-full h-[70vh] flex flex-col items-center text-white" id="destaque">
+            <!-- <h2 class="text-center text-2xl pb-4">Destaques</h2> -->
             <div class="h-full w-full flex justify-center gap-4">
                 <button id="botaoPrev"><</button>
-                <div class="w-[40vw] overflow-hidden flex">
+                <div class="w-[50vw] overflow-hidden flex">
                     <div class="flex h-[90%] items-center" id="destaques-container">
                     </div>
                 </div>

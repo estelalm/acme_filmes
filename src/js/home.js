@@ -59,13 +59,13 @@ async function criarCard(filme, container, destaque) {
 
     //adicionar as classes para os destaques e para outras situações
     if(destaque){
-        card.classList.add('border-[6px]', 'border-violet-300', 'shrink-0', 'w-[40vw]', 'bg-contain','h-full', 'min-w-[200px]', 'flex', 'justify-end')
-        infoFilme.classList.add( 'bg-gradient-to-r', 'from-transparent', 'from-6%', 'to-indigo-900', 'to-10%', 'h-full', 'w-[62%]', 'pl-28', 'pr-8', 'py-12')
+        card.classList.add('transitions','border-[6px]', 'border-violet-300', 'shrink-0', 'w-[50vw]', 'bg-contain','h-full', 'min-w-[200px]', 'flex', 'justify-end')
+        infoFilme.classList.add( 'bg-gradient-to-r', 'from-transparent', 'from-6%', 'to-indigo-900', 'to-10%', 'h-full', 'w-[70%]', 'pl-28', 'pr-8', 'py-12')
         titulo.classList.add('text-5xl')
         dataEgenero.classList.add('flex', 'gap-5')
         ano.classList.add('text-lg')
         genero.classList.add('text-lg')
-        sinopse.classList.add('text-sm', 'py-6', 'w-[70%]', 'leading-6')
+        sinopse.classList.add('text-[1rem]', 'py-6', 'w-[90%]', 'leading-6')
         tempoEsaibaMais.classList.add('flex', 'text-violet-950', 'gap-10', 'h-[12%]')
         tempo.classList.add('flex', 'bg-purple-400', 'px-3', 'py-2', 'gap-4', 'text-lg', 'rounded-lg', 'items-center', 'w-[40%]')
         tempoImg.classList.add('h-[80%]', 'aspect-square')
@@ -120,7 +120,7 @@ const mostrarFilmeClicado = (filme) =>{
     blur.classList.remove('hidden')
 
     const paginaDoFilme = document.createElement('div')
-    paginaDoFilme.classList.add('absolute', 'bg-fuchsia-950', 'h-[90vh]', 'w-[54vw]', 'left-[25%]', 'bottom-[0.5px]', 'p-2', 'rounded-md')
+    paginaDoFilme.classList.add('fixed', 'bottom-0', 'right-1/4', 'left-1/4', 'bg-fuchsia-950', 'h-[95vh]', 'w-[54vw]', 'left-[25%]', 'bottom-[0.5px]', 'p-2', 'rounded-md')
     const botaoVoltar = document.createElement('button')
     botaoVoltar.classList.add('absolute', 'translate-x-[-45px]', 'h-[30px]', 'aspect-square', 'bg-[url("../img/seta.svg")]', 'bg-cover')
 
@@ -142,7 +142,7 @@ const mostrarFilmeClicado = (filme) =>{
     row.classList.add('flex')
 
     const mainInfo = document.createElement('div')
-    mainInfo.classList.add('grid', 'w-1/2')
+    mainInfo.classList.add('grid', 'w-3/5')
 
     const tituloEgenero = document.createElement('div')
     tituloEgenero.classList.add('grid')
@@ -160,7 +160,7 @@ const mostrarFilmeClicado = (filme) =>{
     mainInfo.replaceChildren(tituloEgenero, sinopse)
 
     const botoesDiv = document.createElement('div')
-    botoesDiv.classList.add('w-1/2', 'flex', 'flex-col', 'items-end', 'px-12')
+    botoesDiv.classList.add('w-2/5', 'flex', 'flex-col', 'items-end', 'px-12')
 
     const botComprarAssistir = document.createElement('button')
     botComprarAssistir.classList.add('flex', 'bg-pink-300', 'px-4', 'py-[12px]', 'w-48', 'rounded-md',  'items-center', 'gap-5')
@@ -215,13 +215,13 @@ const mostrarFilmeClicado = (filme) =>{
 }
 
 ///////////////////////////// SLIDER DOS DESTAQUES /////////////////////////
-let slideIndex = 1
+let slideIndex = 0
 const botaoNext = document.getElementById('botaoNext')
 let nextSlide = () =>{
     if(slideIndex >=3){
 
     }else{
-        let translate = 40 * slideIndex
+        let translate = 50 * slideIndex
         destaqueContainer.style.transform = `translate(-${translate}vw, 0)`
         slideIndex++
         console.log(slideIndex)
@@ -230,7 +230,7 @@ let nextSlide = () =>{
 }
 const botaoPrev = document.getElementById('botaoPrev')
 let prevSlide = () =>{
-    let translate = 40 * -slideIndex
+    let translate = 50 * -slideIndex
     destaqueContainer.style.transform = `translate(${translate}vw, 0)`
     slideIndex--
     console.log(slideIndex)
@@ -249,50 +249,3 @@ criarMeusFilmes()
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-////////////////////////////
-
-// const card = document.createElement('div')
-// const infoFilme = document.createElement('div')
-
-// const titulo = document.createElement('h3')
-// titulo.textContent = filme.nome
-
-// const dataEgenero = document.createElement('p')
-// const ano = document.createElement('span')
-// ano.textContent = 2023
-// const genero = document.createElement('span')
-// ano.textContent = 'Fantasia/Aventura'
-// dataEgenero.replaceChildren(ano, genero)
-
-// const sinopse = document.createElement('p')
-// sinopse.textContent = filme.sinopse
-
-// const tempoEsaibaMais = document.createElement('div')
-// const tempo = document.createElement('span')
-// const tempoImg = document.createElement('img')
-// tempoImg.src = '../img/duracao.png'
-// tempo.appendChild(tempoImg)
-// tempo.textContent = filme.duracao
-// const saibaMais = document.createElement('button')
-// saibaMais.textContent = 'Saiba Mais'
-
-// const comprarEadicionar = document.createElement('div')
-// const assistirComprar = document.createElement('a')
-// const comprarImg = document.createElement('img')
-// comprarImg.src = '../img/assistir.png'
-// const textoCompra = document.createElement('p')
-// textoCompra.textContent = 'Assistir'
-// assistirComprar.replaceChildren(comprarImg, textoCompra)
-
-// const adicionarLista = document.createElement('button')
