@@ -749,8 +749,8 @@ video {
   height: 95vh;
 }
 
-.h-\[96\%\] {
-  height: 96%;
+.h-\[99\%\] {
+  height: 99%;
 }
 
 .h-full {
@@ -759,6 +759,18 @@ video {
 
 .h-screen {
   height: 100vh;
+}
+
+.h-\[10vh\] {
+  height: 10vh;
+}
+
+.h-\[8vh\] {
+  height: 8vh;
+}
+
+.h-\[6vh\] {
+  height: 6vh;
 }
 
 .w-1\/2 {
@@ -841,6 +853,10 @@ video {
   width: 100vw;
 }
 
+.w-1\/5 {
+  width: 20%;
+}
+
 .min-w-\[200px\] {
   min-width: 200px;
 }
@@ -874,8 +890,8 @@ video {
   grid-template-columns: 20% 1fr;
 }
 
-.grid-rows-\[10\%\2c _1fr\] {
-  grid-template-rows: 10% 1fr;
+.grid-rows-\[12vh\2c _1fr\] {
+  grid-template-rows: 12vh 1fr;
 }
 
 .grid-rows-\[20vh_80vh\] {
@@ -994,9 +1010,22 @@ video {
   border-width: 6px;
 }
 
+.border-b-2 {
+  border-bottom-width: 2px;
+}
+
+.border-l-0 {
+  border-left-width: 0px;
+}
+
 .border-pink-100 {
   --tw-border-opacity: 1;
   border-color: rgb(252 231 243 / var(--tw-border-opacity));
+}
+
+.border-rosa-claro {
+  --tw-border-opacity: 1;
+  border-color: rgb(224 177 203 / var(--tw-border-opacity));
 }
 
 .border-roxo {
@@ -1120,6 +1149,10 @@ video {
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
 }
 
+.bg-\[url\(\'\.\.\/img\/edit\.svg\'\)\] {
+  background-image: url('../img/edit.svg');
+}
+
 .from-transparent {
   --tw-gradient-from: transparent var(--tw-gradient-from-position);
   --tw-gradient-to: rgb(0 0 0 / 0) var(--tw-gradient-to-position);
@@ -1235,19 +1268,9 @@ video {
   padding-bottom: 0.5rem;
 }
 
-.py-20 {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-}
-
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
-}
-
-.py-48 {
-  padding-top: 12rem;
-  padding-bottom: 12rem;
 }
 
 .py-6 {
@@ -1268,6 +1291,36 @@ video {
 .py-\[12px\] {
   padding-top: 12px;
   padding-bottom: 12px;
+}
+
+.py-\[16vh\] {
+  padding-top: 16vh;
+  padding-bottom: 16vh;
+}
+
+.py-\[2vh\] {
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+}
+
+.py-\[5vh\] {
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+}
+
+.py-48 {
+  padding-top: 12rem;
+  padding-bottom: 12rem;
+}
+
+.py-24 {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.py-16 {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
 .pb-4 {
@@ -1300,6 +1353,10 @@ video {
 
 .pt-4 {
   padding-top: 1rem;
+}
+
+.pt-\[2vh\] {
+  padding-top: 2vh;
 }
 
 .text-center {
@@ -1448,62 +1505,8 @@ video {
   height: var(--scrollbar-height, 16px);
 }
 
-.scrollbar-thin::-webkit-scrollbar-track {
-  background-color: var(--scrollbar-track);
-  border-radius: var(--scrollbar-track-radius);
-}
-
-.scrollbar-thin::-webkit-scrollbar-track:hover {
-  background-color: var(--scrollbar-track-hover, var(--scrollbar-track));
-}
-
-.scrollbar-thin::-webkit-scrollbar-track:active {
-  background-color: var(--scrollbar-track-active, var(--scrollbar-track-hover, var(--scrollbar-track)));
-}
-
-.scrollbar-thin::-webkit-scrollbar-thumb {
-  background-color: var(--scrollbar-thumb);
-  border-radius: var(--scrollbar-thumb-radius);
-}
-
-.scrollbar-thin::-webkit-scrollbar-thumb:hover {
-  background-color: var(--scrollbar-thumb-hover, var(--scrollbar-thumb));
-}
-
-.scrollbar-thin::-webkit-scrollbar-thumb:active {
-  background-color: var(--scrollbar-thumb-active, var(--scrollbar-thumb-hover, var(--scrollbar-thumb)));
-}
-
-.scrollbar-thin::-webkit-scrollbar-corner {
-  background-color: var(--scrollbar-corner);
-  border-radius: var(--scrollbar-corner-radius);
-}
-
-.scrollbar-thin::-webkit-scrollbar-corner:hover {
-  background-color: var(--scrollbar-corner-hover, var(--scrollbar-corner));
-}
-
-.scrollbar-thin::-webkit-scrollbar-corner:active {
-  background-color: var(--scrollbar-corner-active, var(--scrollbar-corner-hover, var(--scrollbar-corner)));
-}
-
-.scrollbar-thin {
-  scrollbar-width: thin;
-  scrollbar-color: var(--scrollbar-thumb, initial) var(--scrollbar-track, initial);
-}
-
-.scrollbar-thin::-webkit-scrollbar {
-  display: block;
-  width: 8px;
-  height: 8px;
-}
-
 .scrollbar-track-transparent {
   --scrollbar-track: transparent !important;
-}
-
-.scrollbar-track-roxo-claro {
-  --scrollbar-track: #9F86C0 !important;
 }
 
 .scrollbar-thumb-fuchsia-900 {

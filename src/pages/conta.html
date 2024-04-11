@@ -10,22 +10,48 @@
     <link href="https://fonts.googleapis.com/css2?family=Inder&display=swap" rel="stylesheet">
     <title>Minha Conta</title>
 </head>
-<body class="w-screen h-screen bg-cover bg-fixed bg-fundo-geral overflow-hidden font-textos grid grid-rows-[10%,_1fr]">
-    <header class="flex justify-between items-center px-32">
+<body class="w-screen h-screen bg-cover bg-fixed bg-fundo-geral overflow-hidden font-textos grid grid-rows-[12vh,_1fr]">
+    <header class="flex justify-between items-center px-32 pt-[2vh]">
         <a href="./home.html" class=" h-[50%] aspect-square bg-cover bg-center"><img src="../img/seta-back.svg" alt=""></a>
-        <img src="../img/logo-acme-melhor.svg" class="h-[96%]">
+        <img src="../img/logo-acme-melhor.svg" class="h-[99%]">
     </header>
-    <main class="grid grid-cols-[20%,_1fr] w-full h-full gap-5 py-20 px-32">
-        <div class="menu bg-roxo-escuro2  px-4 flex flex-col items-center">
-            <ul class="text-white w-full text-center text-2xl py-48">
+    <main class="grid grid-cols-[20%,_1fr] w-full h-[50%] gap-5 py-[5vh] px-32">
+        <div class="menu bg-roxo-escuro2  px-4 flex flex-col items-center py-[2vh] border-*-0 border-b-2 border-rosa-claro">
+            <ul class="text-white w-full text-center text-2xl py-[16vh]">
                 <li class="py-4 hover:bg-roxo-transparencia">Conta</li>
                 <li class="py-4 hover:bg-roxo-transparencia">Configurações</li>
-                <li class="py-4 hover:bg-roxo-transparencia">Compra</li>
+                <li class="py-4 hover:bg-roxo-transparencia">Compras</li>
             </ul>
-            <button class="bg-roxo-claro w-2/5 text-roxo-escuro-1 rounded-lg p-2" id="sair">Sair</button>
+            <button class="bg-roxo-claro w-2/5  text-roxo-escuro-1 rounded-lg p-2" id="sair">Sair</button>
         </div>
-        <div class="bg-roxo-escuro2">
-            
+        <div class="bg-roxo-escuro2 border-*-0 border-b-2 border-rosa-claro text-white p-12">
+            <h2 class="text-2xl">Informações da conta</h2>
+            <div class="py-16 w-full grid gap-4">
+                <div class="flex w-1/2 justify-between">
+                    <p class="grid">
+                        <span class="text-lg">Nome Completo</span>
+                        <span class="text-sm">Nome completo</span>
+                    </p>
+                    <button class=" h-[6vh] aspect-square bg-cover bg-center bg-[url('../img/edit.svg')]"></button>
+                </div>
+                <div class="flex w-1/2 justify-between">
+                    <p class="grid">
+                        <span class="text-lg">email@email.com</span>
+                        <span class="text-sm">Email</span>
+                    </p>
+                    <button class=" h-[6vh] aspect-square bg-cover bg-center bg-[url('../img/edit.svg')]"></button>
+                </div>
+                <div class="flex w-1/2 justify-between">
+                    <p class="grid">
+                        <span class="text-lg">********</span>
+                        <span class="text-sm">Senha</span>
+                    </p>
+                    <button class=" h-[6vh] aspect-square bg-cover bg-center bg-[url('../img/edit.svg')]"></button>
+                </div>
+            </div>
+
+            <span>Informações de Pagamento</span>
+            <p>Cartão 1      *** </p>
         </div>
     </main>
 </body>
