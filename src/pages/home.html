@@ -17,9 +17,11 @@
     class=" w-screen bg-cover bg-fixed bg-fundo-geral overflow-x-hidden font-textos
     scrollbar scrollbar-thumb-roxo">
     <div class="fixed top-0 left-0 z-2 bg-roxo-escuro2 h-screen w-screen backdrop-blur-sm hidden" id="blur-overlay"></div>
-    <header class="flex  p-1 items-center justify-around h-24">
-        <img class="h-16 w-48" src="../img/acme-logo-escuro.svg" alt="">
-        <ul class="flex w-2/6 text-white justify-around text-xl">
+    <header class="flex  p-1 items-center justify-around h-[16vh]">
+        <div class="h-full p-1 flex items-end">  
+            <img class="h-[100%]" src="../img/acme-logo-escuro.svg" alt="">
+        </div>
+        <ul class="flex w-2/6 text-white justify-around lg:text-xl md:lg sm:md">
             <li class=" ">
                 <a href="#" class="">Início</a>
             </li>
@@ -63,21 +65,26 @@
     <main>
 
         <!-- seção de destaques -->
-        <section class="w-full h-[70vh] flex flex-col items-center text-white" id="destaque">
+        <section class="w-full h-[75vh] flex flex-col items-center text-white" id="destaque">
             <!-- <h2 class="text-center text-2xl pb-4">Destaques</h2> -->
             <div class="h-full w-full flex justify-center gap-4">
-                <button id="botaoPrev"><</button>
-                <div class="w-[50vw] overflow-hidden flex">
+                <button id="botaoPrev"><img src="../img/seta.svg" alt=""></button>
+                <div class="w-[58vw] overflow-hidden flex">
                     <div class="flex h-[90%] items-center" id="destaques-container">
                     </div>
                 </div>
-                <button id="botaoNext">></button>
+                <button id="botaoNext"><img src="../img/seta.svg" class="rotate-180 " alt=""></button>
             </div>
         </section>
         <!-- seção de filmes comprados -->
-        <section class="p-12">
-            <h2 class="text-2xl pb-6 text-white">Meus Filmes</h2>
+        <section class="p-12 pt-0">
+            <h2 class="text-2xl pb-6 text-white">Meus filmes</h2>
             <div class="flex gap-5 h-80" id="meus-filmes-container">
+            </div>
+        </section>
+        <section class="p-12 pt-0">
+            <h2 class="text-2xl pb-6 text-white">Filmes que você salvou</h2>
+            <div class="flex gap-5 h-80" id="filmes-salvos">
             </div>
         </section>
     </main>

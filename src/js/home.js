@@ -5,6 +5,7 @@ import { getFilmes, getFilme } from "./filmes.js"
 
 const destaqueContainer = document.getElementById('destaques-container')
 const meusFilmesContainer = document.getElementById('meus-filmes-container')
+const filmesSalvosContainer= document.getElementById('filmes-salvos')
 async function criarDestaques() {
     const filmes = await getFilmes()
     filmes.forEach(filme =>{
@@ -15,6 +16,12 @@ async function criarMeusFilmes() {
     const filmes = await getFilmes()
     filmes.forEach(filme =>{
         criarCard(filme, meusFilmesContainer, false)
+    })
+}
+async function criarFilmesSalvos() {
+    const filmes = await getFilmes()
+    filmes.forEach(filme =>{
+        criarCard(filme, filmesSalvosContainer, false)
     })
 }
 //CRIAR CARDS DOS FILMES
@@ -57,29 +64,29 @@ async function criarCard(filme, container, destaque) {
 
     //adicionar as classes para os destaques e para outras situações
     if(destaque){
-        card.classList.add('transitions','border-[6px]', 'border-violet-300', 'shrink-0', 'w-[50vw]', 'bg-contain','h-full', 'min-w-[200px]', 'flex', 'justify-end')
-        infoFilme.classList.add( 'bg-gradient-to-r', 'from-transparent', 'from-6%', 'to-indigo-900', 'to-10%', 'h-full', 'w-[70%]', 'pl-28', 'pr-8', 'py-12')
+        card.classList.add('transitions','border-[6px]', 'border-violet-300', 'shrink-0', 'w-[58vw]', 'bg-contain','h-full', 'min-w-[600px]', 'flex', 'justify-end')
+        infoFilme.classList.add( 'bg-gradient-to-r', 'from-transparent', 'from-6%', 'to-indigo-900', 'to-10%', 'h-full', 'w-[70%]', 'pl-24', 'pr-6', 'py-6')
         titulo.classList.add('text-5xl')
         dataEgenero.classList.add('flex', 'gap-5')
         ano.classList.add('text-lg')
         genero.classList.add('text-lg')
-        sinopse.classList.add('text-[1rem]', 'py-6', 'w-[90%]', 'leading-6')
-        tempoEsaibaMais.classList.add('flex', 'text-violet-950', 'gap-10', 'h-[12%]')
+        sinopse.classList.add('text-[0.9rem]', 'py-4', 'w-[90%]', 'h-[40%]', 'leading-6', 'overflow-hidden', 'text-elipsis')
+        tempoEsaibaMais.classList.add('flex', 'text-violet-950', 'gap-10', 'h-[12%]', 'pr-4')
         tempo.classList.add('flex', 'bg-purple-400', 'px-3', 'py-2', 'gap-4', 'text-lg', 'rounded-lg', 'items-center', 'w-[40%]')
         tempoImg.classList.add('h-[80%]', 'aspect-square')
         saibaMais.classList.add('bg-purple-300', 'px-3', 'py-2', 'gap-2', 'grid', 'content-center', 'text-2xl', 'rounded-md', 'grow')
         comprarEadicionar.classList.add('flex', 'py-4', 'text-violet-950', 'items-center', 'gap-16', 'h-[20%]')
         assistirComprar.classList.add('flex', 'bg-pink-300', 'px-3', 'py-[10px]', 'text-2xl', 'rounded-lg', 'w-[50%]', 'items-center', 'gap-5', 'h-full')
         comprarImg.classList.add('h-[60%]')
-        adicionarLista.classList.add("bg-[url('../img/adicionado.svg')]", 'bg-contain', 'bg-no-repeat', 'bg-center', 'h-full', 'aspect-square')
+        adicionarLista.classList.add("bg-[url('../img/adicionado.svg')]", 'bg-contain', 'bg-no-repeat', 'bg-center', 'h-[7vh]', 'aspect-square')
     }else{
-        card.classList.add('group', 'shrink-0', 'w-[12vw]', 'hover:w-[24vw]', 'hover:bg-contain', 'hover:border-[6px]', 'hover:border-violet-300', 'bg-cover','h-full', 'min-w-[200px]', 'flex', 'justify-end')
+        card.classList.add('group', 'shrink-0', 'w-[12vw]', 'hover:w-[32vw]', 'transition-[1s]', 'hover:bg-contain', 'hover:border-[6px]', 'hover:border-violet-300', 'bg-cover','h-full', 'min-w-[200px]', 'flex', 'justify-end')
         infoFilme.classList.add('group-hover:block', 'bg-gradient-to-r', 'from-transparent', 'from-6%', 'to-indigo-900', 'to-10%', 'h-full', 'w-[62%]', 'pl-12', 'pr-8', 'py-6', 'hidden', 'text-white')
         titulo.classList.add('text-xl')
         dataEgenero.classList.add('flex', 'gap-5', 'hidden')
         ano.classList.add('text-md')
         genero.classList.add('text-md')
-        sinopse.classList.add('text-sm', 'py-4', 'w-[90%]', 'leading-6', 'h-[50%]', 'text-elipsis', 'overflow-hidden')
+        sinopse.classList.add('text-sm', 'py-4', 'w-[90%]', 'leading-6', 'h-[70%]', 'text-elipsis', 'overflow-hidden')
         tempoEsaibaMais.classList.add('flex', 'text-violet-950', 'gap-10', 'h-[12%]')
         tempo.classList.add('flex', 'bg-purple-400', 'px-3', 'py-2', 'gap-4', 'text-lg', 'rounded-lg', 'items-center', 'w-[40%]', 'hidden')
         tempoImg.classList.add('h-[80%]', 'aspect-square')
@@ -219,7 +226,7 @@ let nextSlide = () =>{
     if(slideIndex >=3){
 
     }else{
-        let translate = 50 * slideIndex
+        let translate = 58 * slideIndex
         destaqueContainer.style.transform = `translate(-${translate}vw, 0)`
         slideIndex++
         console.log(slideIndex)
@@ -228,7 +235,7 @@ let nextSlide = () =>{
 }
 const botaoPrev = document.getElementById('botaoPrev')
 let prevSlide = () =>{
-    let translate = 50 * -slideIndex
+    let translate = 58 * -slideIndex
     destaqueContainer.style.transform = `translate(${translate}vw, 0)`
     slideIndex--
     console.log(slideIndex)
@@ -244,6 +251,6 @@ botaoPrev.addEventListener('click', () =>{
 
 criarDestaques()
 criarMeusFilmes()
-
+criarFilmesSalvos()
 
 
