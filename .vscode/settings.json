@@ -1,3 +1,4 @@
 {
-    "workbench.iconTheme": "vscode-celestial-magic-girl-icon-theme"
+    "workbench.iconTheme": "vscode-celestial-magic-girl-icon-theme",
+    "liveServer.settings.port": 5501
 }
