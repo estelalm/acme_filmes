@@ -7,6 +7,7 @@ import { mostrarFilmeClicado } from "./filme_clicado.js"
 const destaqueContainer = document.getElementById('destaques-container')
 const meusFilmesContainer = document.getElementById('meus-filmes-container')
 const filmesSalvosContainer= document.getElementById('filmes-salvos')
+
 async function criarDestaques() {
     const filmes = await getFilmes()
     filmes.forEach(filme =>{
@@ -134,9 +135,6 @@ async function criarCard(filme, container, destaque) {
   
 }
 
-
-
-
 ///////////////////////////// SLIDER DOS DESTAQUES /////////////////////////
 let slideIndex = 0
 const botaoNext = document.getElementById('botaoNext')
@@ -192,6 +190,11 @@ const preencherListaGeneros = async () =>{
     })
 
  }
+
+const botaoSair = document.getElementById('sair')
+botaoSair.addEventListener('click', () =>{
+    window.location.assign('../../index.html')
+})
 
 criarDestaques()
 criarMeusFilmes()

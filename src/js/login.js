@@ -24,10 +24,12 @@ const logar = async function () {
                 } 
             })
 
-            if(loginValido)
-            window.location.assign('/src/pages/home.html')
-            else
-            alert('Usuário ou senha incorretos')
+            if(loginValido){
+                window.location.assign('/src/pages/home.html')
+            }else{
+                alert('Usuário ou senha incorretos')
+            }
+            
 }
 
 const botaoEntra = document.getElementById('botao-entrar')
