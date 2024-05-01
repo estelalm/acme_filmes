@@ -6,15 +6,20 @@ let generoId = localStorage.getItem('generoId')
 
 const filmesContainer = document.getElementById('section-filmes')
 
+let defaultClassificacao = document.getElementById('default-classificacao')
+let defaultPais = document.getElementById('default-pais')
+
 //preencher os selects para filtrar
 
 const listaGeneros = document.getElementById('filtro-genero')
+
 const preencherListaGeneros = async () => {
 
     const generos = await getGeneros()
 
     // <option value="all">Todos</option>
     const defaultSelected =  document.createElement('option')
+    defaultSelected.id ='default-genero'
     defaultSelected.value = 0
     defaultSelected.textContent = 'Todos'
     
@@ -42,10 +47,12 @@ const preencherListaGeneros = async () => {
 listaGeneros.addEventListener('change', () =>{
     filmesContainer.innerHTML = ''
     filtrarGenero()
+
+    defaultClassificacao.selected = true
+    defaultPais.selected = true
 })
 const filtrarGenero = () =>{
     const generosOptions =  listaGeneros.querySelectorAll('option')
-
     generosOptions.forEach(option =>{
 
         if(option.selected){
@@ -56,6 +63,9 @@ const filtrarGenero = () =>{
         }
     })
 }
+preencherListaGeneros()
+
+
 
 const listaClassificacoes = document.getElementById('filtro-classificacao')
 const preencherListaClassificacaoIndicativa = async () => {
@@ -77,6 +87,10 @@ const preencherListaClassificacaoIndicativa = async () => {
 listaClassificacoes.addEventListener('change', () =>{
     filmesContainer.innerHTML = ''
     filtrarClassificacao()
+
+    let defaultGenero = document.getElementById('default-genero')
+    defaultGenero.selected = true
+    defaultPais.selected = true
 })
 const filtrarClassificacao = () =>{
     const classificacaoOptions =  listaClassificacoes.querySelectorAll('option')
@@ -116,6 +130,11 @@ const preencherListaPaises = async () => {
 listaPaises.addEventListener('change', () =>{
     filmesContainer.innerHTML = ''
     filtrarPaises()
+
+    //resetar os outros selects
+    let defaultGenero = document.getElementById('default-genero')
+    defaultGenero.selected = true
+    defaultClassificacao.selected = true
 })
 const filtrarPaises = () =>{
     const paisesOptions =  listaPaises.querySelectorAll('option')
@@ -226,7 +245,6 @@ const carregarFiltrarFilmes = async (query) =>{
     
 }
 
-preencherListaGeneros()
 preencherListaClassificacaoIndicativa()
 preencherListaPaises()
 pesquisarFilmes(await getFilmes())
