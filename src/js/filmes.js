@@ -1,6 +1,7 @@
 'use strict'
 
 import { getFilmes, getGeneros, getClassificacoes, getPaises, getFiltrarFilmes, getFilmesGenero } from "../../api/endpoints.js"
+import { mostrarFilmeClicado } from "./filme_clicado.js"
 
 let generoId = localStorage.getItem('generoId')
 
@@ -9,8 +10,7 @@ const filmesContainer = document.getElementById('section-filmes')
 let defaultClassificacao = document.getElementById('default-classificacao')
 let defaultPais = document.getElementById('default-pais')
 
-//preencher os selects para filtrar
-
+//preencher e utilizar os selects para filtrar os filmes
 const listaGeneros = document.getElementById('filtro-genero')
 
 const preencherListaGeneros = async () => {
@@ -63,9 +63,6 @@ const filtrarGenero = () =>{
         }
     })
 }
-preencherListaGeneros()
-
-
 
 const listaClassificacoes = document.getElementById('filtro-classificacao')
 const preencherListaClassificacaoIndicativa = async () => {
@@ -150,6 +147,7 @@ const filtrarPaises = () =>{
     })
 }
 
+//criar card dos filmes
 const criarCardFilme = async (filme) => {
     const capaFilme = document.createElement('div')
     capaFilme.classList.add('bg-roxo', 'w-[14vw]', 'aspect-[2/3]', 'group', 'overflow-hidden', 'bg-cover', 'bg-center', 'bg-no-repeat')
@@ -163,8 +161,10 @@ const criarCardFilme = async (filme) => {
 
     const anoEavaliacao = document.createElement('p')
     anoEavaliacao.classList.add('pt-4', 'flex', 'justify-around')
+
+    const dataLancamento = filme.data_lancamento.split('T')[0].split('-').reverse()
     const anoFilme = document.createElement('span')
-    anoFilme.textContent = '2022'
+    anoFilme.textContent = dataLancamento[2]
     const avaliacaoFilme = document.createElement('span')
     if(filme.avaliacao != null)
     avaliacaoFilme.textContent = `${filme.avaliacao}/5 ☆`  
@@ -187,7 +187,13 @@ const criarCardFilme = async (filme) => {
     capaFilme.appendChild(cardFilme)
     filmesContainer.appendChild(capaFilme)
 
+    saibaMais.addEventListener('click', () =>{
+        mostrarFilmeClicado(filme)
+    })
+
 }
+
+//carregar os filmes na pagina
 const carregarFilmes = async () =>{
     let filmes = await getFilmes()
 
@@ -220,6 +226,7 @@ const pesquisarFilmes = async (filmes) =>{
 
 }
 
+//carregar os filmes na pagina de acordo com os filtros
 const carregarFilmesGenero = async (id) =>{
     let filmes = await getFilmesGenero(id)
     
@@ -245,6 +252,7 @@ const carregarFiltrarFilmes = async (query) =>{
     
 }
 
+preencherListaGeneros()
 preencherListaClassificacaoIndicativa()
 preencherListaPaises()
 pesquisarFilmes(await getFilmes())
