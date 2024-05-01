@@ -50,15 +50,32 @@ export async function getFilmes (){
     return data.filmes
 }
 
-export async function getFilmeId (id){
+export async function getFilme (id){
 
-const url = `http://localhost:8080/v2/AcmeFilmes/filme/${id}`
+    const url = `http://localhost:8080/v2/AcmeFilmes/filme/${id}`
     const response = await fetch(url)
     const data = await response.json()
 
     return data.filme
 }
 
+export async function getFilmesGenero (id){
+
+    const url = `http://localhost:8080/v2/AcmeFilmes/filmes/filtro/genero/${id}`
+    const response = await fetch(url)
+    const data = await response.json()
+
+    return data.filmes
+}
+
+export async function getFiltrarFilmes (query){
+
+    const url = `http://localhost:8080/v2/AcmeFilmes/filmes/filtros?${query}`
+    const response = await fetch(url)
+    const data = await response.json()
+
+    return data.filmes
+}
 
 //atores
 
@@ -166,4 +183,15 @@ export async function getPaisId (id){
         const data = await response.json()
   
         return data.paises
+}
+
+//classificacoes
+
+export async function getClassificacoes (){
+
+    const url = 'http://localhost:8080/v2/AcmeFilmes/classificacoes'
+    const response = await fetch(url)
+    const data = await response.json()
+    
+    return data.classificacoes
 }

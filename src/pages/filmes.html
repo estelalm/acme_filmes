@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css2?family=Inder&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/output.css">
+    <script src="../js/filmes.js" type="module" defer></script>
+    <title>ACME Filmes</title>
+</head>
+
+<body
+    class=" w-screen bg-cover bg-fixed bg-fundo-geral overflow-x-hidden font-textos
+    scrollbar scrollbar-thumb-roxo">
+    <div class="fixed top-0 left-0 z-2 bg-roxo-escuro2 h-screen w-screen backdrop-blur-sm hidden" id="blur-overlay"></div>
+    <header class="flex  p-1 items-center justify-around h-[16vh]">
+        <div class="h-full p-1 flex items-end">  
+            <img class="h-[100%]" src="../img/acme-logo-escuro.svg" alt="">
+        </div>
+        <ul class="flex w-2/6 text-white justify-around lg:text-xl md:lg sm:md">
+            <li class=" ">
+                <a href="./home.html" class="">Início</a>
+            </li>
+            <li class=" ">
+                <a href="#" class="">Meus Filmes</a>
+            </li>
+            <li class=" ">
+                <a href="#" class="">Filmes</a>
+            </li>
+        </ul>
+
+        <a href="./conta.html" class="size-12 bg-black rounded-3xl group">
+            <div class="group-hover:flex h-[32vh] right-[1vw] items-end hidden absolute">
+                <div class="h-[26vh] w-[16vw]  bg-roxo-escuro2  p-6 rounded-lg border-2 border-roxo text-white">
+                    <ul class="pb-4">
+                        <li class="p-2 hover:bg-roxo-transparencia">Conta</li>
+                        <li class="p-2 hover:bg-roxo-transparencia">Configurações</li>
+                        <li class="p-2 hover:bg-roxo-transparencia">Compra</li>
+                    </ul>
+                    <div class="flex h-[5vh] justify-between ">
+                        <button class="bg-roxo-claro w-1/2 text-roxo-escuro-1 rounded-lg" id="sair">Sair</button>
+                        <button id="ajuda" class="flex items-center gap-4 text-rosa-claro" ><img src="../img/help.png" class="h-[50%]" alt="Símbolo de interrogação dentro de um círculo"> Ajuda </button>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </header>
+    <main>
+        <section class="w-full h-[16vh] p-4 flex items-center gap-2" id="section-filtros">
+            <div >
+            <label class="text-md px-6">    Pesquisar filme</label>
+            <div class="flex items-center bg-rosa-muito-claro rounded-3xl py-2 px-4 w-[32vw] focus-within:border-purple-800 focus-within:border">
+            <i class="material-icons">search</i>
+            <input type="text" id="barra-pesquisa" class="bg-transparent w-full focus:outline-none px-2 focus-ring:0">
+            </div>
+            </div>
+
+            <div class=" grid">
+                <label class="text-md">Gênero:</label>
+                <select class="h-[100%] w-[16vw] bg-roxo-claro border border-black p-2 outline-none" id="filtro-genero" maxlength="5">
+                    
+                </select>
+            </div>
+            <div class=" grid">
+                <label class="text-md ">Classificação Indicativa:</label>
+                <select class="h-[100%] w-[16vw] bg-roxo-claro border border-black p-2 outline-none" id="filtro-classificacao" maxlength="5">
+                    <option value="0">Todas</option>
+                </select>
+            </div>
+            <div class=" grid">
+                <label class="text-md ">País:</label>
+                <select class="h-[100%] w-[14vw] bg-roxo-claro border border-black p-2 outline-none" id="filtro-pais" maxlength="5">
+                    <option value="">Todos</option>
+                </select>
+            </div>
+        </section>
+        <section class="w-full flex flex-wrap text-white p-8 gap-2" id="section-filmes"> 
+        </section>
+    </main>
+</body>
+
+</html>

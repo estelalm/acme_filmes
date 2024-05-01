@@ -1,7 +1,7 @@
 'use strict'
 
 
-import { getFilmes, getFilme } from "./filmes.js"
+import { getFilmes, getFilme, getGeneros } from "../../api/endpoints.js"
 
 const destaqueContainer = document.getElementById('destaques-container')
 const meusFilmesContainer = document.getElementById('meus-filmes-container')
@@ -64,7 +64,7 @@ async function criarCard(filme, container, destaque) {
 
     //adicionar as classes para os destaques e para outras situações
     if(destaque){
-        card.classList.add('transitions','border-[6px]', 'border-violet-300', 'shrink-0', 'w-[58vw]', 'bg-contain','h-full', 'min-w-[600px]', 'flex', 'justify-end')
+        card.classList.add('transitions', 'border-[6px]', 'border-violet-300', 'shrink-0', 'w-[58vw]', 'bg-contain','h-full', 'min-w-[600px]', 'flex', 'justify-end')
         infoFilme.classList.add( 'bg-gradient-to-r', 'from-transparent', 'from-6%', 'to-indigo-900', 'to-10%', 'h-full', 'w-[70%]', 'pl-24', 'pr-6', 'py-6')
         titulo.classList.add('text-5xl')
         dataEgenero.classList.add('flex', 'gap-5')
@@ -80,7 +80,7 @@ async function criarCard(filme, container, destaque) {
         comprarImg.classList.add('h-[60%]')
         adicionarLista.classList.add("bg-[url('../img/adicionado.svg')]", 'bg-contain', 'bg-no-repeat', 'bg-center', 'h-[7vh]', 'aspect-square')
     }else{
-        card.classList.add('group', 'shrink-0', 'w-[12vw]', 'hover:w-[32vw]', 'transition-[1s]', 'hover:bg-contain', 'hover:border-[6px]', 'hover:border-violet-300', 'bg-cover','h-full', 'min-w-[200px]', 'flex', 'justify-end')
+        card.classList.add('group', 'shrink-0',  'w-[12vw]', 'hover:w-[32vw]', 'transitions', 'transition-all', 'hover:bg-contain', 'hover:border-[6px]', 'hover:border-violet-300', 'bg-cover','h-full', 'min-w-[200px]', 'flex', 'justify-end')
         infoFilme.classList.add('group-hover:block', 'bg-gradient-to-r', 'from-transparent', 'from-6%', 'to-indigo-900', 'to-10%', 'h-full', 'w-[62%]', 'pl-12', 'pr-8', 'py-6', 'hidden', 'text-white')
         titulo.classList.add('text-xl')
         dataEgenero.classList.add('flex', 'gap-5', 'hidden')
@@ -179,7 +179,6 @@ const mostrarFilmeClicado = (filme) =>{
 
     const botoesDeAcao = document.createElement('div')
     botoesDeAcao.classList.add('flex', 'justify-center', 'w-48', 'py-4', 'gap-5', 'items-center')
-    
     const botAdicionar = document.createElement('button')
     botAdicionar.classList.add('bg-[url("../img/add-lista.svg")]', 'bg-cover', 'bg-no-repeat', 'bg-center', 'h-10', 'rounded-xl', 'aspect-square')
     const botAvaliar = document.createElement('button')
@@ -248,9 +247,36 @@ botaoPrev.addEventListener('click', () =>{
 })
 
 /////////////////////////////////////////////////////////////////////////
+///////////////////// PREENCHER LISTA DE GÊNEROS ///////////////////////
+
+const preencherListaGeneros = async () =>{
+
+    const generos = await getGeneros()
+
+    generos.forEach(genero =>{
+
+        const listaGeneros = document.getElementById('lista-genero')
+
+        const generoLi = document.createElement('li')
+        generoLi.classList.add('p-2', 'hover:bg-roxo-transparencia')
+        const generoLink = document.createElement('a')
+        generoLink.href = './filmes.html'
+        generoLink.textContent = genero.nome
+        generoLi.appendChild(generoLink)
+
+        generoLi.addEventListener('click', () =>{
+            localStorage.setItem('generoId', genero.id)
+        })
+
+        listaGeneros.appendChild(generoLi)
+
+    })
+
+ }
 
 criarDestaques()
 criarMeusFilmes()
 criarFilmesSalvos()
+preencherListaGeneros()
 
 
