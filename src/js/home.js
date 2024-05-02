@@ -1,33 +1,74 @@
 'use strict'
 
 
-import { getFilmes, getFilme, getGeneros } from "../../api/endpoints.js"
+import {    getFilmes, getFilme, getGeneros, getFilmesCompradosUsuario, 
+            getFilmesSalvosUsuario, postFilmeComprado, postFilmeSalvo, 
+            deleteFilmeSalvo, postAvaliacaoFilme } from "../../api/endpoints.js"
 import { mostrarFilmeClicado } from "./filme_clicado.js"
+
+const idUsuario = localStorage.getItem('idUsuario')
 
 const destaqueContainer = document.getElementById('destaques-container')
 const meusFilmesContainer = document.getElementById('meus-filmes-container')
 const filmesSalvosContainer= document.getElementById('filmes-salvos')
 
-async function criarDestaques() {
+const criarDestaques = async () => {
     const filmes = await getFilmes()
     filmes.forEach(filme =>{
         criarCard(filme, destaqueContainer, true)
     })
 }
-async function criarMeusFilmes() {
-    const filmes = await getFilmes()
+const criarMeusFilmes = async () => {
+    
+    const filmes = await getFilmesCompradosUsuario(idUsuario)
+    if(!filmes){
+        meusFilmesContainer.innerHTML = 'Você ainda não comprou nenhum filme'
+    }else{
     filmes.forEach(filme =>{
         criarCard(filme, meusFilmesContainer, false)
     })
 }
-async function criarFilmesSalvos() {
-    const filmes = await getFilmes()
+}
+const criarFilmesSalvos = async () => {
+    const filmes = await getFilmesSalvosUsuario(idUsuario)
+    if(!filmes){
+        filmesSalvosContainer.innerHTML = 'Você ainda não salvou nenhum filme'
+    }else{
     filmes.forEach(filme =>{
         criarCard(filme, filmesSalvosContainer, false)
     })
 }
+}
+
+const getIdsComprados = async () =>{
+    const filmes = await getFilmesCompradosUsuario(idUsuario)
+    if(filmes){
+        const idsComprados = filmes.map(filme =>{
+            return filme.id
+        })
+        return idsComprados
+    }else{
+        return []
+    }
+}
+const getIdsSalvos = async () =>{
+    const filmes = await getFilmesSalvosUsuario(idUsuario)
+    if(filmes){
+        const idsSalvos = filmes.map(filme =>{
+            return filme.id
+        })
+        return idsSalvos
+    }else{
+        return []
+    }
+}
+
+
 //CRIAR CARDS DOS FILMES
-async function criarCard(filme, container, destaque) {
+const criarCard = async (filme, container, destaque) => {
+
+    const filmesComprados = await getIdsComprados()
+    const filmesSalvos = await getIdsSalvos()
 
     const containerDestino = container
 
@@ -71,15 +112,45 @@ async function criarCard(filme, container, destaque) {
     tempoText.textContent = duracaoFormatada
     const saibaMais = document.createElement('button')
     saibaMais.textContent = 'Saiba Mais'
+
     const comprarEadicionar = document.createElement('div')
     const assistirComprar = document.createElement('a')
-    assistirComprar.href = ''
     const comprarImg = document.createElement('img')
-    comprarImg.src = '../img/assistir.png'
     const textoCompra = document.createElement('p')
-    textoCompra.textContent = 'Assistir'
+
+    if(filmesComprados.includes(filme.id)){
+        assistirComprar.href = ''
+        comprarImg.src = '../img/assistir.png'
+        textoCompra.textContent = 'Assistir'
+    }else{
+        assistirComprar.href = ''
+        comprarImg.src = '../img/comprar.png'
+        textoCompra.textContent = `R$${filme.valor_unitario}`
+    }
+
+    assistirComprar.addEventListener('click',async () =>{
+        await postFilmeComprado(idUsuario, filme.id)
+    })
+
+
     assistirComprar.append(comprarImg, textoCompra)
     const adicionarLista = document.createElement('button')
+
+    if(filmesSalvos.includes(filme.id)){
+        adicionarLista.classList.add("bg-[url('../img/adicionado.svg')]")
+    }else{
+        adicionarLista.classList.add("bg-[url('../img/add-lista.svg')]")
+    }
+
+    adicionarLista.addEventListener('click', async () =>{
+        if(filmesSalvos.includes(filme.id)){
+            await deleteFilmeSalvo(idUsuario, filme.id)
+        }
+        else{
+            await postFilmeSalvo(idUsuario, filme.id)
+        }
+        window.location.reload()
+    })
     //adicionar as classes gerais
 
     //adicionar as classes para os destaques e para outras situações
@@ -98,7 +169,7 @@ async function criarCard(filme, container, destaque) {
         comprarEadicionar.classList.add('flex', 'py-4', 'text-violet-950', 'items-center', 'gap-16', 'h-[20%]')
         assistirComprar.classList.add('flex', 'bg-pink-300', 'px-3', 'py-[10px]', 'text-2xl', 'rounded-lg', 'w-[50%]', 'items-center', 'gap-5', 'h-full')
         comprarImg.classList.add('h-[60%]')
-        adicionarLista.classList.add("bg-[url('../img/adicionado.svg')]", 'bg-contain', 'bg-no-repeat', 'bg-center', 'h-[7vh]', 'aspect-square')
+        adicionarLista.classList.add( 'bg-contain', 'bg-no-repeat', 'bg-center', 'h-[7vh]', 'aspect-square')
     }else{
         card.classList.add('group', 'shrink-0',  'w-[12vw]', 'hover:w-[32vw]', 'transitions', 'transition-all', 'hover:bg-contain', 'hover:border-[6px]', 'hover:border-violet-300', 'bg-cover','h-full', 'min-w-[200px]', 'flex', 'justify-end')
         infoFilme.classList.add('group-hover:block', 'bg-gradient-to-r', 'from-transparent', 'from-6%', 'to-indigo-900', 'to-10%', 'h-full', 'w-[62%]', 'pl-12', 'pr-8', 'py-6', 'hidden', 'text-white')
@@ -114,7 +185,7 @@ async function criarCard(filme, container, destaque) {
         comprarEadicionar.classList.add('flex', 'py-4', 'text-violet-950', 'items-center', 'gap-16', 'h-[20%]')
         assistirComprar.classList.add('flex', 'bg-pink-300', 'px-3', 'py-[10px]', 'text-2xl', 'rounded-lg', 'w-[50%]', 'items-center', 'gap-5', 'h-full', 'hidden')
         comprarImg.classList.add('h-[60%]')
-        adicionarLista.classList.add("bg-[url('../img/adicionado.svg')]", 'bg-contain', 'bg-no-repeat', 'bg-center', 'h-full', 'aspect-square')
+        adicionarLista.classList.add('bg-contain', 'bg-no-repeat', 'bg-center', 'h-full', 'aspect-square')
         botoes.classList.add('flex', 'py-2')
     }
 
@@ -145,7 +216,6 @@ let nextSlide = () =>{
         let translate = 58 * slideIndex
         destaqueContainer.style.transform = `translate(-${translate}vw, 0)`
         slideIndex++
-        console.log(slideIndex)
     }
 
 }
@@ -154,7 +224,6 @@ let prevSlide = () =>{
     let translate = 58 * -slideIndex
     destaqueContainer.style.transform = `translate(${translate}vw, 0)`
     slideIndex--
-    console.log(slideIndex)
 }
 botaoNext.addEventListener('click', () =>{
     nextSlide()

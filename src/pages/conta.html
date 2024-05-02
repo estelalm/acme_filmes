@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link href="https://fonts.googleapis.com/css2?family=Inder&display=swap" rel="stylesheet">
+    <script src="../js/conta.js" type="module" defer></script>
     <title>Minha Conta</title>
 </head>
 <body class="w-screen h-screen bg-cover bg-fixed bg-fundo-geral overflow-hidden font-textos grid grid-rows-[12vh,_1fr]">
@@ -16,7 +17,7 @@
         <img src="../img/acme-logo-escuro.svg" class="h-[99%]">
     </header>
     <main class="grid grid-cols-[20%,_1fr] w-full h-[50%] gap-5 py-[5vh] px-32">
-        <div class="menu bg-roxo-escuro2  px-4 flex flex-col items-center py-[2vh] border-*-0 border-b-2 border-rosa-claro">
+        <div class="menu bg-roxo-escuro2  px-4 flex flex-col items-center py-[2vh] border-*-0 border-b-2 border-rosa-claro" id="menu-container">
             <ul class="text-white w-full text-center text-2xl py-[16vh]">
                 <li class="py-4 hover:bg-roxo-transparencia">Conta</li>
                 <li class="py-4 hover:bg-roxo-transparencia">Configurações</li>
@@ -24,26 +25,26 @@
             </ul>
             <button class="bg-roxo-claro w-2/5  text-roxo-escuro-1 rounded-lg p-2" id="sair">Sair</button>
         </div>
-        <div class="bg-roxo-escuro2 border-*-0 border-b-2 border-rosa-claro text-white p-12">
+        <div class="bg-roxo-escuro2 border-*-0 border-b-2 border-rosa-claro text-white p-12" id="info-container">
             <h2 class="text-2xl">Informações da conta</h2>
             <div class="py-16 w-full grid gap-4">
                 <div class="flex w-1/2 justify-between">
                     <p class="grid">
-                        <span class="text-lg">Nome Completo</span>
+                       <input type="text" id="nome" class="bg-transparent outline-none focus:outline-none text-lg" disabled >
                         <span class="text-sm">Nome completo</span>
                     </p>
                     <button class=" h-[6vh] aspect-square bg-cover bg-center bg-[url('../img/edit.svg')]"></button>
                 </div>
                 <div class="flex w-1/2 justify-between">
                     <p class="grid">
-                        <span class="text-lg">email@email.com</span>
+                        <input type="text" id="email" class="bg-transparent outline-none focus:outline-none text-lg" disabled >
                         <span class="text-sm">Email</span>
                     </p>
                     <button class=" h-[6vh] aspect-square bg-cover bg-center bg-[url('../img/edit.svg')]"></button>
                 </div>
                 <div class="flex w-1/2 justify-between">
                     <p class="grid">
-                        <span class="text-lg">********</span>
+                        <input type="password" id="senha" class="bg-transparent outline-none focus:outline-none text-lg" disabled >
                         <span class="text-sm">Senha</span>
                     </p>
                     <button class=" h-[6vh] aspect-square bg-cover bg-center bg-[url('../img/edit.svg')]"></button>

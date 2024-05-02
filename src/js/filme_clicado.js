@@ -1,3 +1,5 @@
+import { postAvaliacaoFilme } from "../../api/endpoints.js"
+
 export const mostrarFilmeClicado = (filme) =>{
 
     const body = document.querySelector('body')
@@ -71,8 +73,31 @@ export const mostrarFilmeClicado = (filme) =>{
     botoesDeAcao.classList.add('flex', 'justify-center', 'w-48', 'py-4', 'gap-5', 'items-center')
     const botAdicionar = document.createElement('button')
     botAdicionar.classList.add('bg-[url("../img/add-lista.svg")]', 'bg-cover', 'bg-no-repeat', 'bg-center', 'h-10', 'rounded-xl', 'aspect-square')
+
     const botAvaliar = document.createElement('button')
     botAvaliar.classList.add('bg-[url("../img/avaliar.svg")]', 'bg-cover', 'bg-no-repeat', 'bg-center', 'h-10', 'rounded-xl', 'aspect-square')
+    botAvaliar.addEventListener('click', () =>{
+        const containerAvaliacao = document.createElement('div')
+        containerAvaliacao.classList.add('flex', 'gap-4')
+        
+        for(let count = 1;count<6;count++){
+            let numero = document.createElement('button')
+            numero.innerHTML =count
+            containerAvaliacao.appendChild(numero)
+
+            numero.addEventListener('click', async () =>{
+                let idUsuario = localStorage.getItem('idUsuario')
+                let novaAvaliacao = {
+                    "usuario": idUsuario,
+                    "avaliacao": count
+                }
+                await postAvaliacaoFilme(filme.id, novaAvaliacao)
+            })
+        }
+        botoesDiv.appendChild(containerAvaliacao)
+        
+    })
+
     botoesDeAcao.replaceChildren(botAdicionar, botAvaliar)
     botoesDiv.replaceChildren(botComprarAssistir, botoesDeAcao)
 

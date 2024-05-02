@@ -50,6 +50,75 @@ export async function getFilmes (){
     return data.filmes
 }
 
+export async function postAvaliacaoFilme(idFilme, avaliacao){
+    const url = `http://localhost:8080/v2/AcmeFilmes/filme/avaliacao/${idFilme}`
+    const options = {
+        method: "POST",
+        headers: {
+            'Content-Type':'application/json'
+        },
+        body: JSON.stringify(avaliacao)
+    }
+
+
+    const response = await fetch(url, options)
+    console.log(response.json)
+    return response.ok
+}
+
+export async function getFilmesCompradosUsuario (id){
+
+    const url = `http://localhost:8080/v2/AcmeFilmes/filmes/comprados/usuario/${id}`
+    const response = await fetch(url)
+    const data = await response.json()
+
+    return data.filmes
+}
+
+export async function postFilmeComprado (idUsuario, idFilme) {
+    const url = `http://localhost:8080/v2/AcmeFilmes/filme/comprado/usuario?id_usuario=${idUsuario}&id_filme=${idFilme}`
+    const options = {
+        method: "POST"
+    }
+
+    const response = await fetch(url, options)
+
+    console.log(response.json())
+    return response.ok
+}
+
+
+export async function getFilmesSalvosUsuario (id){
+
+    const url = `http://localhost:8080/v2/AcmeFilmes/filmes/salvos/usuario/${id}`
+    const response = await fetch(url)
+    const data = await response.json()
+
+    return data.filmes
+}
+
+export async function postFilmeSalvo (idUsuario, idFilme) {
+    const url = `http://localhost:8080/v2/AcmeFilmes/filme/salvo/usuario?id_usuario=${idUsuario}&id_filme=${idFilme}`
+    const options = {
+        method: "POST"
+    }
+
+    const response = await fetch(url, options)
+
+    console.log(response.json())
+    return response.ok
+}
+export async function deleteFilmeSalvo (idUsuario, idFilme) {
+    const url = `http://localhost:8080/v2/AcmeFilmes/filme/salvo/usuario?id_usuario=${idUsuario}&id_filme=${idFilme}`
+    const options = {
+        method: "DELETE"
+    }
+    const response = await fetch(url, options)
+
+    console.log(response.json())
+    return response.ok
+}
+
 export async function getFilme (id){
 
     const url = `http://localhost:8080/v2/AcmeFilmes/filme/${id}`
