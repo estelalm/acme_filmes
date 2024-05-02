@@ -1,6 +1,8 @@
-import { postAvaliacaoFilme } from "../../api/endpoints.js"
+import { postAvaliacaoFilme, updateAvaliacaoFilme, getFilmesAvaliadosUsuario } from "../../api/endpoints.js"
+import { getIdsAvaliados, getIdsComprados, getIdsSalvos } from "../../api/id_results_endpoints.js"
+let idUsuario = localStorage.getItem('idUsuario')
 
-export const mostrarFilmeClicado = (filme) =>{
+export const mostrarFilmeClicado = async (filme) => {
 
     const body = document.querySelector('body')
     body.classList.add('overflow-y-hidden')
@@ -28,9 +30,9 @@ export const mostrarFilmeClicado = (filme) =>{
     infoFilmeFundo.classList.add('text-slate-50', 'pt-20', 'px-6', 'h-[56%]', 'bottom-[3vw]', 'relative', 'bg-gradient-to-b', 'from-transparent', 'from-6%', 'to-fuchsia-950', 'to-10%')
 
     const infoFilme = document.createElement('div')
-    infoFilme.classList.add( 'h-full', 'overflow-y-scroll', 'pt-2',
-    'scrollbar-thumb-fuchsia-900', 'scrollbar-track-transparent', 'scrollbar',
-    'scrollbar-thumb-rounded-full', 'scrollbar-track-rounded-full', 'scrollbar-w-1')
+    infoFilme.classList.add('h-full', 'overflow-y-scroll', 'pt-2',
+        'scrollbar-thumb-fuchsia-900', 'scrollbar-track-transparent', 'scrollbar',
+        'scrollbar-thumb-rounded-full', 'scrollbar-track-rounded-full', 'scrollbar-w-1')
 
     const row = document.createElement('div')
     row.classList.add('flex')
@@ -44,7 +46,7 @@ export const mostrarFilmeClicado = (filme) =>{
     titulo.classList.add('text-5xl')
     titulo.textContent = filme.nome
     const generos = document.createElement('span')
-    const generosFilme = filme.generos.map(genero =>{
+    const generosFilme = filme.generos.map(genero => {
         return genero.nome
     })
     generos.textContent = generosFilme.join('/')
@@ -60,42 +62,86 @@ export const mostrarFilmeClicado = (filme) =>{
     botoesDiv.classList.add('w-2/5', 'flex', 'flex-col', 'items-end', 'px-12')
 
     const botComprarAssistir = document.createElement('button')
-    botComprarAssistir.classList.add('flex', 'bg-pink-300', 'px-4', 'py-[12px]', 'w-48', 'rounded-md',  'items-center', 'gap-5')
+    botComprarAssistir.classList.add('flex', 'bg-pink-300', 'px-4', 'py-[12px]', 'w-48', 'rounded-md', 'items-center', 'gap-5')
     const botComprarImg = document.createElement('img')
-    botComprarImg.src = '../img/comprar.png'
     botComprarImg.classList.add('h-8')
     const botComprarText = document.createElement('span')
     botComprarText.classList.add('text-indigo-950', 'text-xl')
-    botComprarText.textContent = filme.valor_unitario.toFixed(2)
+
+
+    let filmesComprados = await getIdsComprados(idUsuario)
+    if (filmesComprados.includes(filme.id)) {
+        botComprarAssistir.href = ''
+        botComprarImg.src = '../img/assistir.png'
+        botComprarText.textContent = 'Assistir'
+    } else {
+        botComprarAssistir.href = ''
+        botComprarImg.src = '../img/comprar.png'
+        botComprarText.textContent = `R$${filme.valor_unitario.toFixed(2)}`
+    }
     botComprarAssistir.replaceChildren(botComprarImg, botComprarText)
 
     const botoesDeAcao = document.createElement('div')
     botoesDeAcao.classList.add('flex', 'justify-center', 'w-48', 'py-4', 'gap-5', 'items-center')
+
     const botAdicionar = document.createElement('button')
-    botAdicionar.classList.add('bg-[url("../img/add-lista.svg")]', 'bg-cover', 'bg-no-repeat', 'bg-center', 'h-10', 'rounded-xl', 'aspect-square')
+    botAdicionar.classList.add('bg-cover', 'bg-no-repeat', 'bg-center', 'h-10', 'rounded-xl', 'aspect-square')
+    
+    let filmesSalvos = await getIdsSalvos(idUsuario)
+    if(filmesSalvos.includes(filme.id)){
+        botAdicionar.classList.add("bg-[url('../img/adicionado.svg')]")
+    }else{
+        botAdicionar.classList.add("bg-[url('../img/add-lista.svg')]")
+    }
+
+    botAdicionar.addEventListener('click', async () =>{
+        if(filmesSalvos.includes(filme.id)){
+            await deleteFilmeSalvo(idUsuario, filme.id)
+        }
+        else{
+            await postFilmeSalvo(idUsuario, filme.id)
+        }
+        window.location.reload()
+    })
 
     const botAvaliar = document.createElement('button')
-    botAvaliar.classList.add('bg-[url("../img/avaliar.svg")]', 'bg-cover', 'bg-no-repeat', 'bg-center', 'h-10', 'rounded-xl', 'aspect-square')
-    botAvaliar.addEventListener('click', () =>{
+    botAvaliar.classList.add('bg-cover', 'bg-no-repeat', 'bg-center', 'h-10', 'rounded-xl', 'aspect-square')
+
+    let filmesAvaliados = await getIdsAvaliados(idUsuario)
+
+    if (filmesAvaliados.includes(filme.id)) {
+        botAvaliar.style.backgroundImage = 'url("../img/avaliado.svg")'
+    } else {
+        botAvaliar.style.backgroundImage = 'url("../img/avaliar.svg")'
+    }
+
+    botAvaliar.addEventListener('click', () => {
         const containerAvaliacao = document.createElement('div')
         containerAvaliacao.classList.add('flex', 'gap-4')
-        
-        for(let count = 1;count<6;count++){
+
+        for (let count = 1; count < 6; count++) {
             let numero = document.createElement('button')
-            numero.innerHTML =count
+            numero.innerHTML = count
             containerAvaliacao.appendChild(numero)
 
-            numero.addEventListener('click', async () =>{
+            numero.addEventListener('click', async () => {
                 let idUsuario = localStorage.getItem('idUsuario')
+
                 let novaAvaliacao = {
                     "usuario": idUsuario,
                     "avaliacao": count
                 }
+
+                if(filmesAvaliados.includes(filme.id))
+                await updateAvaliacaoFilme(filme.id, novaAvaliacao)
+                else
                 await postAvaliacaoFilme(filme.id, novaAvaliacao)
+
+                botoesDiv.removeChild(containerAvaliacao)
             })
         }
         botoesDiv.appendChild(containerAvaliacao)
-        
+
     })
 
     botoesDeAcao.replaceChildren(botAdicionar, botAvaliar)
@@ -120,20 +166,20 @@ export const mostrarFilmeClicado = (filme) =>{
     lancamento.textContent = `Lançamento: ${dataFilme}`
 
     const direcao = document.createElement('span')
-    const diretoresFilme = filme.diretor.map(diretor =>{
+    const diretoresFilme = filme.diretor.map(diretor => {
         return diretor.nome
     })
     direcao.textContent = 'Direção: ' + diretoresFilme.join(', ')
 
     const producao = document.createElement('span')
-    const produtoraFilme = filme.produtora.map( produtora =>{
-        return  produtora.nome
+    const produtoraFilme = filme.produtora.map(produtora => {
+        return produtora.nome
     })
     producao.textContent = `Produção: ` + produtoraFilme.join(', ')
 
     const elenco = document.createElement('p')
-    const elencoFilme = filme.elenco.map( ator =>{
-        return  ator.nome
+    const elencoFilme = filme.elenco.map(ator => {
+        return ator.nome
     })
     elenco.textContent = `Elenco: ` + elencoFilme.join(', ')
 
@@ -143,7 +189,7 @@ export const mostrarFilmeClicado = (filme) =>{
     paginaDoFilme.replaceChildren(botaoVoltar, videoContainer, infoFilmeFundo)
     main.appendChild(paginaDoFilme)
 
-    botaoVoltar.addEventListener('click', ( ) =>{
+    botaoVoltar.addEventListener('click', () => {
         body.classList.remove('overflow-y-hidden')
         blur.classList.add('hidden')
         paginaDoFilme.remove()

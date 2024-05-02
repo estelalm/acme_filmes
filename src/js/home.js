@@ -3,7 +3,9 @@
 
 import {    getFilmes, getFilme, getGeneros, getFilmesCompradosUsuario, 
             getFilmesSalvosUsuario, postFilmeComprado, postFilmeSalvo, 
-            deleteFilmeSalvo, postAvaliacaoFilme } from "../../api/endpoints.js"
+            deleteFilmeSalvo, postAvaliacaoFilme, getFilmesAvaliadosUsuario } from "../../api/endpoints.js"
+
+import { getIdsAvaliados, getIdsComprados, getIdsSalvos } from "../../api/id_results_endpoints.js"
 import { mostrarFilmeClicado } from "./filme_clicado.js"
 
 const idUsuario = localStorage.getItem('idUsuario')
@@ -11,11 +13,14 @@ const idUsuario = localStorage.getItem('idUsuario')
 const destaqueContainer = document.getElementById('destaques-container')
 const meusFilmesContainer = document.getElementById('meus-filmes-container')
 const filmesSalvosContainer= document.getElementById('filmes-salvos')
+console.log(await getFilmesAvaliadosUsuario(idUsuario))
 
 const criarDestaques = async () => {
     const filmes = await getFilmes()
     filmes.forEach(filme =>{
-        criarCard(filme, destaqueContainer, true)
+        if(filme.id < 8){
+            criarCard(filme, destaqueContainer, true)
+        }
     })
 }
 const criarMeusFilmes = async () => {
@@ -40,35 +45,14 @@ const criarFilmesSalvos = async () => {
 }
 }
 
-const getIdsComprados = async () =>{
-    const filmes = await getFilmesCompradosUsuario(idUsuario)
-    if(filmes){
-        const idsComprados = filmes.map(filme =>{
-            return filme.id
-        })
-        return idsComprados
-    }else{
-        return []
-    }
-}
-const getIdsSalvos = async () =>{
-    const filmes = await getFilmesSalvosUsuario(idUsuario)
-    if(filmes){
-        const idsSalvos = filmes.map(filme =>{
-            return filme.id
-        })
-        return idsSalvos
-    }else{
-        return []
-    }
-}
+
 
 
 //CRIAR CARDS DOS FILMES
 const criarCard = async (filme, container, destaque) => {
 
-    const filmesComprados = await getIdsComprados()
-    const filmesSalvos = await getIdsSalvos()
+    const filmesComprados = await getIdsComprados(idUsuario)
+    const filmesSalvos = await getIdsSalvos(idUsuario)
 
     const containerDestino = container
 
@@ -129,7 +113,10 @@ const criarCard = async (filme, container, destaque) => {
     }
 
     assistirComprar.addEventListener('click',async () =>{
+        if(filmesComprados.includes(filme.id)){
         await postFilmeComprado(idUsuario, filme.id)
+        }
+
     })
 
 

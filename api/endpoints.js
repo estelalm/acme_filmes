@@ -65,6 +65,31 @@ export async function postAvaliacaoFilme(idFilme, avaliacao){
     console.log(response.json)
     return response.ok
 }
+export async function updateAvaliacaoFilme(idFilme, avaliacao){
+    const url = `http://localhost:8080/v2/AcmeFilmes/filme/avaliacao/${idFilme}`
+    const options = {
+        method: "PUT",
+        headers: {
+            'Content-Type':'application/json'
+        },
+        body: JSON.stringify(avaliacao)
+    }
+
+
+    const response = await fetch(url, options)
+    console.log(response.json)
+    return response.ok
+}
+
+
+export async function getFilmesAvaliadosUsuario (id){
+
+    const url = `http://localhost:8080/v2/AcmeFilmes/filme/avaliacao/usuario/${id}`
+    const response = await fetch(url)
+    const data = await response.json()
+
+    return data.filmes
+}
 
 export async function getFilmesCompradosUsuario (id){
 
