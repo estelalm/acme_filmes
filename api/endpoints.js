@@ -50,6 +50,16 @@ export async function getFilmes (){
     return data.filmes
 }
 
+export async function getFilmeNome(nome){
+
+    const url = `http://localhost:8080/v2/AcmeFilmes/filmes/filtro?nome=${nome}`
+    const response = await fetch(url)
+    const data = await response.json()
+    console.log(data)
+
+    return data.filmes
+}
+
 export async function postAvaliacaoFilme(idFilme, avaliacao){
     const url = `http://localhost:8080/v2/AcmeFilmes/filme/avaliacao/${idFilme}`
     const options = {

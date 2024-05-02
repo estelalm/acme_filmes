@@ -1,7 +1,7 @@
 'use strict'
 
 
-import {    getFilmes, getFilme, getGeneros, getFilmesCompradosUsuario, 
+import {    getFilmes, getFilmeNome, getGeneros, getFilmesCompradosUsuario, 
             getFilmesSalvosUsuario, postFilmeComprado, postFilmeSalvo, 
             deleteFilmeSalvo, postAvaliacaoFilme, getFilmesAvaliadosUsuario } from "../../api/endpoints.js"
 
@@ -13,7 +13,6 @@ const idUsuario = localStorage.getItem('idUsuario')
 const destaqueContainer = document.getElementById('destaques-container')
 const meusFilmesContainer = document.getElementById('meus-filmes-container')
 const filmesSalvosContainer= document.getElementById('filmes-salvos')
-console.log(await getFilmesAvaliadosUsuario(idUsuario))
 
 const criarDestaques = async () => {
     const filmes = await getFilmes()
@@ -44,8 +43,6 @@ const criarFilmesSalvos = async () => {
     })
 }
 }
-
-
 
 
 //CRIAR CARDS DOS FILMES
@@ -245,7 +242,66 @@ const preencherListaGeneros = async () =>{
 
     })
 
- }
+}
+
+//barra de pesquisa
+const search = function (filmes){
+
+    const searchInput = document.getElementById('search-bar')
+    const resultsBox = document.getElementById('search-result')
+
+    let filmesNameArray = []
+    filmes.forEach(function(filme){
+         let name = filme.nome 
+         filmesNameArray.push(name)
+    })
+    searchInput.onkeyup = function(){
+    let results = []
+    let input = searchInput.value
+
+     if(input.length){
+          resultsBox.classList.remove('hidden')
+          results = filmesNameArray.filter((keyword) =>{
+          return keyword.toLowerCase().includes(input.toLowerCase())
+         })
+     }else{
+      resultsBox.classList.add('hidden')
+     }
+     displayResult(results)
+  }
+  
+  const displayResult = function (results){
+  
+        let content = results.map((listItem) => {
+            return `<li class="p-2 hover:bg-roxo-transparencia filme-search">${listItem}</li>`
+        })
+  
+        resultsBox.innerHTML = `<ul class="pb-4">${content.join('')}</ul>`
+  
+
+        const filmeList = document.querySelectorAll('.filme-search')
+        filmeList.forEach( filmeListed =>{
+          filmeListed.addEventListener('click', async () =>{
+            let nomeFilme = filmeListed.textContent
+
+            let filme = await getFilmeNome(nomeFilme)
+
+            await mostrarFilmeClicado(filme[0])
+             
+          })
+        })
+    }
+  }
+  async function loadSearchItems(){
+    const filmes = await getFilmes()
+    search(filmes)
+  }
+  loadSearchItems()
+  
+
+
+
+
 
 const botaoSair = document.getElementById('sair')
 botaoSair.addEventListener('click', () =>{

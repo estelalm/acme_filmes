@@ -46,6 +46,7 @@ export const mostrarFilmeClicado = async (filme) => {
     titulo.classList.add('text-5xl')
     titulo.textContent = filme.nome
     const generos = document.createElement('span')
+
     const generosFilme = filme.generos.map(genero => {
         return genero.nome
     })

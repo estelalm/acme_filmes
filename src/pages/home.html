@@ -13,13 +13,11 @@
     <title>ACME Filmes</title>
 </head>
 
-<body
-    class=" w-screen bg-cover bg-fixed bg-fundo-geral overflow-x-hidden font-textos
+<body class=" w-screen bg-cover bg-fixed bg-fundo-geral overflow-x-hidden font-textos
     scrollbar scrollbar-thumb-roxo">
-    <!-- resolver questão do blur com o tailwind -->
     <div class="fixed top-0 left-0 z-2 h-screen w-screen backdrop-blur-sm hidden" id="blur-overlay"></div>
     <header class="flex  p-1 items-center justify-around h-[16vh]">
-        <div class="h-full p-1 flex items-end">  
+        <div class="h-full p-1 flex items-end">
             <img class="h-[100%]" src="../img/acme-logo-escuro.svg" alt="">
         </div>
         <ul class="flex w-2/6 text-white justify-around lg:text-xl md:lg sm:md">
@@ -35,17 +33,22 @@
             <li class=" ">
                 <div class="group cursor-pointer">
                     <span>Gêneros</span>
-                    <ul class=" w-[16vw] group-hover:block bg-roxo-escuro2 absolute p-6 rounded-lg border-2 border-roxo hidden" id="lista-genero">
+                    <ul class=" w-[16vw] group-hover:block bg-roxo-escuro2 absolute p-6 rounded-lg border-2 border-roxo hidden"
+                        id="lista-genero">
                     </ul>
                 </div>
             </li>
         </ul>
-        <div
-            class="flex items-center bg-rosa-muito-claro rounded-3xl py-2 px-4 w-1/4 focus-within:border-purple-800 focus-within:border">
-            <i class="material-icons">search</i>
-            <input type="text" class="bg-transparent w-full focus:outline-none px-2 focus-ring:0">
+        <div class="relative">
+            <div
+                class="flex items-center bg-rosa-muito-claro rounded-3xl py-2 px-4 w-3/4 focus-within:border-purple-800 focus-within:border">
+                <i class="material-icons">search</i>
+                <input type="text" id="search-bar" class="bg-transparent w-full focus:outline-none px-2 focus-ring:0">
+            </div>
+            <div class=" w-[16vw] h-[10vh] bg-roxo-escuro2  p-6 rounded-lg border-2 border-roxo text-white absolute hidden" id="search-result">
+            </div>
         </div>
-        <div href="./conta.html" class="size-12 bg-black rounded-3xl group">
+        <div href="./conta.html" class="size-12 bg-cover bg-center bg-no-repeat rounded-3xl group" style="background-image: url('../img/user-icon.svg');">
             <div class="group-hover:flex h-[32vh] right-[1vw] items-end hidden absolute">
                 <div class=" w-[16vw]  bg-roxo-escuro2  p-6 rounded-lg border-2 border-roxo text-white">
                     <ul class="pb-4">
@@ -55,12 +58,15 @@
                     </ul>
                     <div class="flex h-[5vh] justify-between ">
                         <button class="bg-roxo-claro w-1/2 text-roxo-escuro-1 rounded-lg" id="sair">Sair</button>
-                        <button id="ajuda" class="flex items-center gap-4 text-rosa-claro" ><img src="../img/help.png" class="h-[50%]" alt="Símbolo de interrogação dentro de um círculo"> Ajuda </button>
+                        <button id="ajuda" class="flex items-center gap-4 text-rosa-claro">
+                            <img src="../img/help.png" class="h-[50%]"
+                                alt="Símbolo de interrogação dentro de um círculo"> Ajuda
+                        </button>
                     </div>
                 </div>
             </div>
 
-        </dic>
+            </dic>
     </header>
     <main>
 
