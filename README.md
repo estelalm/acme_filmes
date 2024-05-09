@@ -38,9 +38,9 @@ Níveis | Desempenho | Nota
 
 ## Links do projeto
 
-Protótipo | FRONT-END | Landing Page | CMS 
-----------|-----------|--------------|-----
-[Figma][link1] | [ACME FILMES][link2] | [gitPreview][link3] | [CMS][link4] 
+Protótipo | FRONT-END | Landing Page | CMS | BACK-END 
+----------|-----------|--------------|-----|---------
+[Figma][https://www.figma.com/design/bOt3eTfI0bVj1RONfPKOrt/ACME-Filmes?node-id=1-3&t=kaQ8u9Q1KD4l23oD-0] | [ACME FILMES][https://github.com/estelalm/acme_filmes] | [gitPreview][estelalm.github.io/acme_filmes/] | [CMS][https://github.com/estelalm/acme-cms] |  [BACK-END][https://github.com/estelalm/acme-back-end]
 
 
 [link1]: https://www.figma.com/
