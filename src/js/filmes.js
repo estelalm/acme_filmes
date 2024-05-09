@@ -2,6 +2,7 @@
 
 import { getFilmes, getGeneros, getClassificacoes, getPaises, getFiltrarFilmes, getFilmesGenero } from "../../api/endpoints.js"
 import { mostrarFilmeClicado } from "./filme_clicado.js"
+import { displayLoading } from "./utility.js"
 
 const loaders = document.querySelectorAll(".loader")
 loaders.forEach(loader => displayLoading(loader))
@@ -201,6 +202,7 @@ const carregarFilmes = async () =>{
     let filmes = await getFilmes()
 
     filmes.forEach(filme =>{
+        console.log(filme)
         criarCardFilme(filme)
     })
 }

@@ -5,7 +5,7 @@ import {    getFilmes, getFilmeNome, getGeneros, getFilmesCompradosUsuario,
             deleteFilmeSalvo, postAvaliacaoFilme, getFilmesAvaliadosUsuario } from "../../api/endpoints.js"
 
 import { getIdsAvaliados, getIdsComprados, getIdsSalvos } from "../../api/id_results_endpoints.js"
-import { displayLoading } from "../../js/utility.js"
+import { displayLoading } from "../js/utility.js"
 import { mostrarFilmeClicado } from "./filme_clicado.js"
 
 const loaders = document.querySelectorAll(".loader")
@@ -115,6 +115,7 @@ const criarCard = async (filme, container, destaque) => {
     assistirComprar.addEventListener('click',async () =>{
         if(filmesComprados.includes(filme.id)){
         await postFilmeComprado(idUsuario, filme.id)
+        
         }
 
     })

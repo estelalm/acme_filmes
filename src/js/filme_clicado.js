@@ -1,4 +1,4 @@
-import { postAvaliacaoFilme, updateAvaliacaoFilme, getFilmesAvaliadosUsuario } from "../../api/endpoints.js"
+import { postAvaliacaoFilme, updateAvaliacaoFilme, getFilmesAvaliadosUsuario, postFilmeSalvo, postFilmeComprado } from "../../api/endpoints.js"
 import { getIdsAvaliados, getIdsComprados, getIdsSalvos } from "../../api/id_results_endpoints.js"
 let idUsuario = localStorage.getItem('idUsuario')
 
@@ -20,7 +20,7 @@ export const mostrarFilmeClicado = async (filme) => {
     const trailer = document.createElement('iframe')
     trailer.width = '100%'
     trailer.height = '100%'
-    trailer.src = 'https://www.youtube-nocookie.com/embed/yBiU39bUFlA?si=GPRVz2g4m_7XG36w&amp;controls=0&rel=0'
+    trailer.src = filme.trailer
     trailer.title = 'Youtube video player'
     trailer.frameborder = '0'
     trailer.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
@@ -159,7 +159,9 @@ export const mostrarFilmeClicado = async (filme) => {
     const duracao = document.createElement('span')
     duracao.textContent = `Duração: ${duracaoFilme}`
     const classificacao = document.createElement('span')
-    classificacao.textContent = `Classificação indicativa: ${filme.classificacao.classificacao[0].nome_completo}`
+
+    console.log(filme)
+    classificacao.textContent = `Classificação indicativa: ${filme.classificacao[0].nome_completo}`
 
     const dataSplit = filme.data_lancamento.split('T')
     const dataFilme = dataSplit[0].split('-').reverse().join('/')

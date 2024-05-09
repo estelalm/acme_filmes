@@ -2,7 +2,7 @@
 export async function getUsuarios (){
 
     try{
-        const url = 'https://acme-back-end-ukc8.onrender.com/v2/AcmeFilmes/usuarios'
+        const url = 'http://localhost:8080/v2/AcmeFilmes/usuarios'
         const response = await fetch(url)
         const data = await response.json()
     
@@ -18,7 +18,7 @@ export async function getUsuarios (){
 
 export async function getUsuarioId (id){
 
-const url = `https://acme-back-end-ukc8.onrender.com/v2/AcmeFilmes/usuario/${id}`
+const url = `http://localhost:8080/v2/AcmeFilmes/usuario/${id}`
     const response = await fetch(url)
     const data = await response.json()
     console.log(data)
@@ -26,7 +26,7 @@ const url = `https://acme-back-end-ukc8.onrender.com/v2/AcmeFilmes/usuario/${id}
 }
 
 export async function postUsuario (usuario) {
-    const url = 'https://acme-back-end-ukc8.onrender.com/v2/AcmeFilmes/usuario'
+    const url = 'http://localhost:8080/v2/AcmeFilmes/usuario'
     const options = {
         method: "POST",
         headers: {
@@ -43,7 +43,7 @@ export async function postUsuario (usuario) {
 
 export async function getFilmes (){
 
-    const url = 'https://acme-back-end-ukc8.onrender.com/v2/AcmeFilmes/filmes'
+    const url = 'http://localhost:8080/v2/AcmeFilmes/filmes'
     const response = await fetch(url)
     const data = await response.json()
 
@@ -52,7 +52,7 @@ export async function getFilmes (){
 
 export async function getFilmeNome(nome){
 
-    const url = `https://acme-back-end-ukc8.onrender.com/v2/AcmeFilmes/filmes/filtro?nome=${nome}`
+    const url = `http://localhost:8080/v2/AcmeFilmes/filmes/filtro?nome=${nome}`
     const response = await fetch(url)
     const data = await response.json()
     console.log(data)
@@ -61,7 +61,7 @@ export async function getFilmeNome(nome){
 }
 
 export async function postAvaliacaoFilme(idFilme, avaliacao){
-    const url = `https://acme-back-end-ukc8.onrender.com/v2/AcmeFilmes/filme/avaliacao/${idFilme}`
+    const url = `http://localhost:8080/v2/AcmeFilmes/filme/avaliacao/${idFilme}`
     const options = {
         method: "POST",
         headers: {
@@ -76,7 +76,7 @@ export async function postAvaliacaoFilme(idFilme, avaliacao){
     return response.ok
 }
 export async function updateAvaliacaoFilme(idFilme, avaliacao){
-    const url = `https://acme-back-end-ukc8.onrender.com/v2/AcmeFilmes/filme/avaliacao/${idFilme}`
+    const url = `http://localhost:8080/v2/AcmeFilmes/filme/avaliacao/${idFilme}`
     const options = {
         method: "PUT",
         headers: {
@@ -94,7 +94,7 @@ export async function updateAvaliacaoFilme(idFilme, avaliacao){
 
 export async function getFilmesAvaliadosUsuario (id){
 
-    const url = `https://acme-back-end-ukc8.onrender.com/v2/AcmeFilmes/filme/avaliacao/usuario/${id}`
+    const url = `http://localhost:8080/v2/AcmeFilmes/filme/avaliacao/usuario/${id}`
     const response = await fetch(url)
     const data = await response.json()
 
@@ -103,7 +103,7 @@ export async function getFilmesAvaliadosUsuario (id){
 
 export async function getFilmesCompradosUsuario (id){
 
-    const url = `https://acme-back-end-ukc8.onrender.com/v2/AcmeFilmes/filmes/comprados/usuario/${id}`
+    const url = `http://localhost:8080/v2/AcmeFilmes/filmes/comprados/usuario/${id}`
     const response = await fetch(url)
     const data = await response.json()
 
@@ -111,7 +111,7 @@ export async function getFilmesCompradosUsuario (id){
 }
 
 export async function postFilmeComprado (idUsuario, idFilme) {
-    const url = `https://acme-back-end-ukc8.onrender.com/v2/AcmeFilmes/filme/comprado/usuario?id_usuario=${idUsuario}&id_filme=${idFilme}`
+    const url = `http://localhost:8080/v2/AcmeFilmes/filme/comprado/usuario?id_usuario=${idUsuario}&id_filme=${idFilme}`
     const options = {
         method: "POST"
     }
@@ -125,15 +125,17 @@ export async function postFilmeComprado (idUsuario, idFilme) {
 
 export async function getFilmesSalvosUsuario (id){
 
-    const url = `https://acme-back-end-ukc8.onrender.com/v2/AcmeFilmes/filmes/salvos/usuario/${id}`
+    const url = `http://localhost:8080/v2/AcmeFilmes/filmes/salvos/usuario/${id}`
     const response = await fetch(url)
     const data = await response.json()
+
+    console.log(data)
 
     return data.filmes
 }
 
 export async function postFilmeSalvo (idUsuario, idFilme) {
-    const url = `https://acme-back-end-ukc8.onrender.com/v2/AcmeFilmes/filme/salvo/usuario?id_usuario=${idUsuario}&id_filme=${idFilme}`
+    const url = `http://localhost:8080/v2/AcmeFilmes/filme/salvo/usuario?id_usuario=${idUsuario}&id_filme=${idFilme}`
     const options = {
         method: "POST"
     }
@@ -144,7 +146,7 @@ export async function postFilmeSalvo (idUsuario, idFilme) {
     return response.ok
 }
 export async function deleteFilmeSalvo (idUsuario, idFilme) {
-    const url = `https://acme-back-end-ukc8.onrender.com/v2/AcmeFilmes/filme/salvo/usuario?id_usuario=${idUsuario}&id_filme=${idFilme}`
+    const url = `http://localhost:8080/v2/AcmeFilmes/filme/salvo/usuario?id_usuario=${idUsuario}&id_filme=${idFilme}`
     const options = {
         method: "DELETE"
     }
@@ -156,16 +158,18 @@ export async function deleteFilmeSalvo (idUsuario, idFilme) {
 
 export async function getFilme (id){
 
-    const url = `https://acme-back-end-ukc8.onrender.com/v2/AcmeFilmes/filme/${id}`
+    const url = `http://localhost:8080/v2/AcmeFilmes/filme/${id}`
     const response = await fetch(url)
     const data = await response.json()
+
+    console.log(data)
 
     return data.filme
 }
 
 export async function getFilmesGenero (id){
 
-    const url = `https://acme-back-end-ukc8.onrender.com/v2/AcmeFilmes/filmes/filtro/genero/${id}`
+    const url = `http://localhost:8080/v2/AcmeFilmes/filmes/filtro/genero/${id}`
     const response = await fetch(url)
     const data = await response.json()
 
@@ -174,7 +178,7 @@ export async function getFilmesGenero (id){
 
 export async function getFiltrarFilmes (query){
 
-    const url = `https://acme-back-end-ukc8.onrender.com/v2/AcmeFilmes/filmes/filtros?${query}`
+    const url = `http://localhost:8080/v2/AcmeFilmes/filmes/filtros?${query}`
     const response = await fetch(url)
     const data = await response.json()
 
@@ -185,7 +189,7 @@ export async function getFiltrarFilmes (query){
 
 export async function getAtores (){
 
-    const url = 'https://acme-back-end-ukc8.onrender.com/v2/AcmeFilmes/atores'
+    const url = 'http://localhost:8080/v2/AcmeFilmes/atores'
     const response = await fetch(url)
     const data = await response.json()
 
@@ -195,7 +199,7 @@ export async function getAtores (){
 
 export async function getAtorId (id){
 
-    const url = `https://acme-back-end-ukc8.onrender.com/v2/AcmeFilmes/ator/${id}`
+    const url = `http://localhost:8080/v2/AcmeFilmes/ator/${id}`
         const response = await fetch(url)
         const data = await response.json()
     
@@ -206,7 +210,7 @@ export async function getAtorId (id){
 
 export async function getDiretores (){
 
-    const url = 'https://acme-back-end-ukc8.onrender.com/v2/AcmeFilmes/diretores'
+    const url = 'http://localhost:8080/v2/AcmeFilmes/diretores'
     const response = await fetch(url)
     const data = await response.json()
 
@@ -216,7 +220,7 @@ export async function getDiretores (){
 
 export async function getDiretorId (id){
 
-    const url = `https://acme-back-end-ukc8.onrender.com/v2/AcmeFilmes/diretor/${id}`
+    const url = `http://localhost:8080/v2/AcmeFilmes/diretor/${id}`
         const response = await fetch(url)
         const data = await response.json()
     
@@ -228,7 +232,7 @@ export async function getDiretorId (id){
 
 export async function getProdutoras (){
 
-    const url = 'https://acme-back-end-ukc8.onrender.com/v2/AcmeFilmes/produtoras'
+    const url = 'http://localhost:8080/v2/AcmeFilmes/produtoras'
     const response = await fetch(url)
     const data = await response.json()
 
@@ -238,7 +242,7 @@ export async function getProdutoras (){
 
 export async function getProdutoraId (id){
 
-    const url = `https://acme-back-end-ukc8.onrender.com/v2/AcmeFilmes/produtora/${id}`
+    const url = `http://localhost:8080/v2/AcmeFilmes/produtora/${id}`
         const response = await fetch(url)
         const data = await response.json()
   
@@ -250,7 +254,7 @@ export async function getProdutoraId (id){
 
 export async function getGeneros (){
 
-    const url = 'https://acme-back-end-ukc8.onrender.com/v2/AcmeFilmes/generos'
+    const url = 'http://localhost:8080/v2/AcmeFilmes/generos'
     const response = await fetch(url)
     const data = await response.json()
 
@@ -260,7 +264,7 @@ export async function getGeneros (){
 
 export async function getGeneroId (id){
 
-    const url = `https://acme-back-end-ukc8.onrender.com/v2/AcmeFilmes/genero/${id}`
+    const url = `http://localhost:8080/v2/AcmeFilmes/genero/${id}`
         const response = await fetch(url)
         const data = await response.json()
   
@@ -272,7 +276,7 @@ export async function getGeneroId (id){
 
 export async function getPaises (){
 
-    const url = 'https://acme-back-end-ukc8.onrender.com/v2/AcmeFilmes/paises'
+    const url = 'http://localhost:8080/v2/AcmeFilmes/paises'
     const response = await fetch(url)
     const data = await response.json()
 
@@ -282,7 +286,7 @@ export async function getPaises (){
 
 export async function getPaisId (id){
 
-    const url = `https://acme-back-end-ukc8.onrender.com/v2/AcmeFilmes/pais/${id}`
+    const url = `http://localhost:8080/v2/AcmeFilmes/pais/${id}`
         const response = await fetch(url)
         const data = await response.json()
   
@@ -293,7 +297,7 @@ export async function getPaisId (id){
 
 export async function getClassificacoes (){
 
-    const url = 'https://acme-back-end-ukc8.onrender.com/v2/AcmeFilmes/classificacoes'
+    const url = 'http://localhost:8080/v2/AcmeFilmes/classificacoes'
     const response = await fetch(url)
     const data = await response.json()
     

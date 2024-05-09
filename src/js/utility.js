@@ -6,7 +6,7 @@ export function displayLoading(loader) {
     // to stop loading after some time
     setTimeout(() => {
         loader.classList.add("hidden")
-    }, 10000)
+    }, 1000)
 }
 
 // hiding loading 
