@@ -30,8 +30,9 @@ const criarConta = async () => {
         let novoUsuario = postUsuario(novoUsuarioJSON)
 
         if (novoUsuario) {
-            alert("Conta criada, voltando para a página de login.")
-            window.location.assign("../../index.html")
+            // alert("Conta criada, voltando para a página de login.")
+            // window.location.assign("../../index.html")
+            console.log(novoUsuario)
         }
     }
 }

@@ -21,7 +21,7 @@ export async function getUsuarioId (id){
 const url = `https://acme-back-end-ukc8.onrender.com/v2/AcmeFilmes/usuario/${id}`
     const response = await fetch(url)
     const data = await response.json()
-
+    console.log(data)
     return data.usuario
 }
 

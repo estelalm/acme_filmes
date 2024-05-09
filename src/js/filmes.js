@@ -3,6 +3,9 @@
 import { getFilmes, getGeneros, getClassificacoes, getPaises, getFiltrarFilmes, getFilmesGenero } from "../../api/endpoints.js"
 import { mostrarFilmeClicado } from "./filme_clicado.js"
 
+const loaders = document.querySelectorAll(".loader")
+loaders.forEach(loader => displayLoading(loader))
+
 let generoId = localStorage.getItem('generoId')
 
 const filmesContainer = document.getElementById('section-filmes')

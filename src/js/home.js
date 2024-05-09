@@ -1,12 +1,15 @@
 'use strict'
 
-
 import {    getFilmes, getFilmeNome, getGeneros, getFilmesCompradosUsuario, 
             getFilmesSalvosUsuario, postFilmeComprado, postFilmeSalvo, 
             deleteFilmeSalvo, postAvaliacaoFilme, getFilmesAvaliadosUsuario } from "../../api/endpoints.js"
 
 import { getIdsAvaliados, getIdsComprados, getIdsSalvos } from "../../api/id_results_endpoints.js"
+import { displayLoading } from "../../js/utility.js"
 import { mostrarFilmeClicado } from "./filme_clicado.js"
+
+const loaders = document.querySelectorAll(".loader")
+loaders.forEach(loader => displayLoading(loader))
 
 const idUsuario = localStorage.getItem('idUsuario')
 

@@ -2,7 +2,7 @@
 
 import { getUsuarios, getFilmes } from "../../api/endpoints.js"
 
-
+getUsuarios()
 const logar = async function () {
 
             let usuarios = await getUsuarios()

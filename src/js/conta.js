@@ -12,6 +12,7 @@ const preencherInfoUsuario = async () =>{
 
     let usuario = await getUsuarioId(idUsuario)
 
+
     nome.value = usuario[0].nome
     email.value = usuario[0].email
     senha.value = usuario[0].senha

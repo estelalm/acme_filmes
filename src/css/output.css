@@ -701,6 +701,10 @@ video {
   height: 100%;
 }
 
+.h-\[10vh\] {
+  height: 10vh;
+}
+
 .h-\[12\%\] {
   height: 12%;
 }
@@ -793,12 +797,16 @@ video {
   height: 100vh;
 }
 
-.w-1\/2 {
-  width: 50%;
+.h-\[4vh\] {
+  height: 4vh;
 }
 
-.w-1\/4 {
-  width: 25%;
+.h-\[30\%\] {
+  height: 30%;
+}
+
+.w-1\/2 {
+  width: 50%;
 }
 
 .w-2\/5 {
@@ -807,6 +815,10 @@ video {
 
 .w-2\/6 {
   width: 33.333333%;
+}
+
+.w-3\/4 {
+  width: 75%;
 }
 
 .w-3\/5 {
@@ -877,6 +889,14 @@ video {
   width: 100vw;
 }
 
+.w-\[20vw\] {
+  width: 20vw;
+}
+
+.w-\[30vw\] {
+  width: 30vw;
+}
+
 .min-w-\[200px\] {
   min-width: 200px;
 }
@@ -905,6 +925,27 @@ video {
 
 .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.animate-ping {
+  animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: .5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 .cursor-pointer {
@@ -1025,6 +1066,14 @@ video {
 
 .rounded-xl {
   border-radius: 0.75rem;
+}
+
+.rounded-\[100\%\] {
+  border-radius: 100%;
+}
+
+.rounded-ee-xl {
+  border-end-end-radius: 0.75rem;
 }
 
 .border {
@@ -1153,16 +1202,17 @@ video {
   background-color: rgb(46 16 101 / var(--tw-bg-opacity));
 }
 
-.bg-\[url\(\"\.\.\/img\/add-lista\.svg\"\)\] {
-  background-image: url("../img/add-lista.svg");
-}
-
-.bg-\[url\(\"\.\.\/img\/avaliar\.svg\"\)\] {
-  background-image: url("../img/avaliar.svg");
+.bg-roxo-transparencia {
+  --tw-bg-opacity: 1;
+  background-color: rgb(58 40 94 / var(--tw-bg-opacity));
 }
 
 .bg-\[url\(\"\.\.\/img\/seta\.svg\"\)\] {
   background-image: url("../img/seta.svg");
+}
+
+.bg-\[url\(\'\.\.\/img\/add-lista\.svg\'\)\] {
+  background-image: url('../img/add-lista.svg');
 }
 
 .bg-\[url\(\'\.\.\/img\/adicionado\.svg\'\)\] {
@@ -1203,10 +1253,6 @@ video {
 
 .bg-gradient-to-r {
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
-}
-
-.bg-\[url\(\'\.\.\/img\/add-lista\.svg\'\)\] {
-  background-image: url('../img/add-lista.svg');
 }
 
 .from-transparent {
@@ -1532,6 +1578,10 @@ video {
 
 .blur {
   --tw-blur: blur(8px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+.filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 

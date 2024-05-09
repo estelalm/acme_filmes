@@ -45,10 +45,12 @@
                 <i class="material-icons">search</i>
                 <input type="text" id="search-bar" class="bg-transparent w-full focus:outline-none px-2 focus-ring:0">
             </div>
-            <div class=" w-[16vw] h-[10vh] bg-roxo-escuro2  p-6 rounded-lg border-2 border-roxo text-white absolute hidden" id="search-result">
+            <div class=" w-[16vw] h-[10vh] bg-roxo-escuro2  p-6 rounded-lg border-2 border-roxo text-white absolute hidden"
+                id="search-result">
             </div>
         </div>
-        <div href="./conta.html" class="size-12 bg-cover bg-center bg-no-repeat rounded-3xl group" style="background-image: url('../img/user-icon.svg');">
+        <div href="./conta.html" class="size-12 bg-cover bg-center bg-no-repeat rounded-3xl group"
+            style="background-image: url('../img/user-icon.svg');">
             <div class="group-hover:flex h-[32vh] right-[1vw] items-end hidden absolute">
                 <div class=" w-[16vw]  bg-roxo-escuro2  p-6 rounded-lg border-2 border-roxo text-white">
                     <ul class="pb-4">
@@ -77,6 +79,31 @@
                 <button id="botaoPrev"><img src="../img/seta.svg" alt=""></button>
                 <div class="w-[58vw] overflow-hidden flex">
                     <div class="flex h-[90%] items-center" id="destaques-container">
+                        <div id="destaque-loader" class=" loader hidden transitions border-[6px] border-violet-300 bg-roxo-claro animate-pulse shrink-0 w-[58vw] bg-contain h-full min-w-[600px] flex justify-end">
+                            <div
+                                class="bg-gradient-to-r from-transparent from-6% to-indigo-900 to-10% h-full w-[70%] pl-24 pr-6 py-6">
+                                <h3 class="w-[30vw] h-[6vh] bg-roxo-claro animate-pulse"></h3>
+                                <p class="flex gap-5 py-2">
+                                    <span class="w-[12vw] h-[4vh] bg-roxo-claro animate-pulse"></span>
+                                    <span class="w-[12vw] h-[4vh] bg-roxo-claro animate-pulse"></span>
+                                </p>
+                                <p class="text-[0.9rem]  py-4 w-[90%] h-[40%] leading-6 overflow-hidden text-elipsis">
+                                </p>
+                                <div>
+                                    <div class="flex text-violet-950 gap-10 h-[12%] pr-4">
+                                        <span
+                                            class="flex bg-roxo-claro animate-pulse px-3 py-2 gap-4 text-lg rounded-lg items-center w-[40%]">
+                                               </span><button
+                                            class="bg-roxo-claro animate-pulse px-3 py-2 gap-2 grid content-center text-2xl rounded-md grow"></button></div>
+                                    <div class="flex py-4  items-center gap-16 h-[20%]"><a href=""
+                                            class="flex bg-roxo-claro animate-pulse px-3 py-[10px] text-2xl rounded-lg w-[50%] items-center gap-5 h-full">
+                                            
+                                        </a><button
+                                            class="bg-roxo-claro animate-pulse h-[7vh] aspect-square"></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <button id="botaoNext"><img src="../img/seta.svg" class="rotate-180 " alt=""></button>
@@ -91,6 +118,7 @@
         <section class="p-12 pt-0">
             <h2 class="text-2xl pb-6 text-white">Filmes que você salvou</h2>
             <div class="flex gap-5 h-80" id="filmes-salvos">
+                <div class=" bg-roxo-claro animate-pulse shrink-0 w-[12vw] h-full min-w-[200px] hidden loader"></div>
             </div>
         </section>
     </main>
