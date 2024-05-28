@@ -1,6 +1,6 @@
 'use strict'
 
-import { getFilmes, getGeneros, getClassificacoes, getPaises, getFiltrarFilmes, getFilmesGenero } from "../../api/endpoints.js"
+import { getFilmes, getGeneros, getClassificacoes, getFilmes, getFiltrarFilmes, getFilmesGenero } from "../../api/endpoints.js"
 import { mostrarFilmeClicado } from "./filme_clicado.js"
 import { displayLoading } from "./utility.js"
 
@@ -12,7 +12,7 @@ let generoId = localStorage.getItem('generoId')
 const filmesContainer = document.getElementById('section-filmes')
 
 let defaultClassificacao = document.getElementById('default-classificacao')
-let defaultPais = document.getElementById('default-pais')
+let defaultfilme = document.getElementById('default-filme')
 
 //preencher e utilizar os selects para filtrar os filmes
 const listaGeneros = document.getElementById('filtro-genero')
@@ -53,7 +53,7 @@ listaGeneros.addEventListener('change', () =>{
     filtrarGenero()
 
     defaultClassificacao.selected = true
-    defaultPais.selected = true
+    defaultfilme.selected = true
 })
 const filtrarGenero = () =>{
     const generosOptions =  listaGeneros.querySelectorAll('option')
@@ -91,7 +91,7 @@ listaClassificacoes.addEventListener('change', () =>{
 
     let defaultGenero = document.getElementById('default-genero')
     defaultGenero.selected = true
-    defaultPais.selected = true
+    defaultfilme.selected = true
 })
 const filtrarClassificacao = () =>{
     const classificacaoOptions =  listaClassificacoes.querySelectorAll('option')
@@ -107,46 +107,46 @@ const filtrarClassificacao = () =>{
     })
 }
 
-const listaPaises = document.getElementById('filtro-pais')
-const preencherListaPaises = async () => {
+const listaFilmes = document.getElementById('filtro-filme')
+const preencherListaFilmes = async () => {
 
-    const paises = await getPaises()
-
-
-    paises.forEach(pais => {
+    const Filmes = await getFilmes()
 
 
-        const listaPaises = document.getElementById('filtro-pais')
+    Filmes.forEach(filme => {
 
-        const paisOption = document.createElement('option')
-        paisOption.classList.add('p-2', 'hover:bg-roxo-transparencia')
-        paisOption.value = pais.id
-        paisOption.textContent = pais.nome
 
-        listaPaises.appendChild(paisOption)
+        const listaFilmes = document.getElementById('filtro-filme')
+
+        const filmeOption = document.createElement('option')
+        filmeOption.classList.add('p-2', 'hover:bg-roxo-transparencia')
+        filmeOption.value = filme.id
+        filmeOption.textContent = filme.nome
+
+        listaFilmes.appendChild(filmeOption)
 
     })
 
 }
-listaPaises.addEventListener('change', () =>{
+listaFilmes.addEventListener('change', () =>{
     filmesContainer.innerHTML = ''
-    filtrarPaises()
+    filtrarFilmes()
 
     //resetar os outros selects
     let defaultGenero = document.getElementById('default-genero')
     defaultGenero.selected = true
     defaultClassificacao.selected = true
 })
-const filtrarPaises = () =>{
-    const paisesOptions =  listaPaises.querySelectorAll('option')
+const filtrarFilmes = () =>{
+    const FilmesOptions =  listaFilmes.querySelectorAll('option')
 
-    paisesOptions.forEach(option =>{
+    FilmesOptions.forEach(option =>{
 
         if(option.selected){
             if(option.value == 0)
             carregarFilmes()
             else
-            carregarFiltrarFilmes(`pais_origem_id=${option.value}`)
+            carregarFiltrarFilmes(`filme_origem_id=${option.value}`)
         }
     })
 }
@@ -259,7 +259,7 @@ const carregarFiltrarFilmes = async (query) =>{
 
 preencherListaGeneros()
 preencherListaClassificacaoIndicativa()
-preencherListaPaises()
+preencherListaFilmes()
 pesquisarFilmes(await getFilmes())
 
 if(generoId != 0){
